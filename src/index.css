@@ -14,5 +14,26 @@
 body {
     font-family: "Manrope", sans-serif;
     color: var(--black);
+    background-color: var(--white);
 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    color: inherit;
+}
+
+button:focus {
+    outline: none;
 }
