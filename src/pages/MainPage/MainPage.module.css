@@ -1,0 +1,54 @@
+.main{
+    background-image: url('../../assets/images/main/main-mob.webp') ;
+    background-size: cover;
+    height: 812px;
+    width: 375px;
+    
+}
+
+.mob_logo{
+    margin: 391px 92px;
+}
+
+.logo{
+    margin: 462px 197px;
+    }
+
+    
+
+@media (max-width: 767px) and (min-resolution: 192dpi) {
+    .main {
+        background-image: url('../../assets/images/main/main2x-mob.webp');
+    }
+}
+
+@media  (min-width: 768px) {
+    .main{
+        background-image: url('../../assets/images/main/main-tab.webp');
+        height: 1024px;
+        width: 768px;
+    }       
+}
+
+@media  (min-width: 768px) and (min-resolution: 192dpi) {
+    .main {
+        background-image: url('../../assets/images/main/main2x-tab.webp');
+    }
+}
+
+@media  (min-width: 1280px) {
+    .main {
+        background-image: url('../../assets/images/main/main.webp');
+        min-width: 1280px;
+    }      
+    .logo{
+        margin: 350px 453px;
+    }
+}
+
+  @media  (min-width: 1280px) and (min-resolution: 192dpi) {
+      .main {
+       
+          background-image: url('../../assets/images/main/main2x.webp');
+      }
+  }
