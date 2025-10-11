@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #262626;
+    --yellow:#F6B83D;
+    --light-yellow: #FFF4DF;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    color: var(--black);
+
+}
