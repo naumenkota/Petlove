@@ -1,23 +1,11 @@
 import s from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import PasswordToggle from "../PasswordToggle/PasswordToggle";
 import { useState } from "react";
-import Title from "../Title/Title";
-
-const LoginFormSchema = yup.object().shape({
-  email: yup
-    .string()
-    .transform((value) => value.trim())
-    .email("Enter a valid Email")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(7, "Enter a valid password")
-    .required("Password is required"),
-});
+import Title from "../Title/Title.jsx";
+import { LoginFormSchema } from "../../utils/LoginFormSchema.js";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
