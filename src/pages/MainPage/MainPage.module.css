@@ -3,18 +3,14 @@
     background-size: cover;
     height: 812px;
     width: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
-.mob_logo{
-    margin: 391px 92px;
-}
 
-.logo{
-    margin: 462px 197px;
-    }
-
-    
+ 
 
 @media (max-width: 767px) and (min-resolution: 192dpi) {
     .main {
@@ -40,10 +36,10 @@
     .main {
         background-image: url('../../assets/images/main/main.webp');
         min-width: 1280px;
+        height: 800px;
+        
     }      
-    .logo{
-        margin: 350px 453px;
-    }
+ 
 }
 
   @media  (min-width: 1280px) and (min-resolution: 192dpi) {

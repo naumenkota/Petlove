@@ -6,12 +6,6 @@ import { useMediaQuery } from "react-responsive";
 export default function MainPage() {
   const mobile = useMediaQuery({ maxWidth: 767 });
   return (
-    <div className={s.main}>
-      {mobile ? (
-        <LogoMainMob className={s.mob_logo} />
-      ) : (
-        <LogoMain className={s.logo} />
-      )}
-    </div>
+    <div className={s.main}>{mobile ? <LogoMainMob /> : <LogoMain />}</div>
   );
 }
