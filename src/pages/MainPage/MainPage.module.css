@@ -2,7 +2,7 @@
     background-image: url('../../assets/images/main/main-mob.webp') ;
     background-size: cover;
     height: 812px;
-    width: 375px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@
     .main{
         background-image: url('../../assets/images/main/main-tab.webp');
         height: 1024px;
-        width: 768px;
+        
     }       
 }
 
@@ -35,7 +35,6 @@
 @media  (min-width: 1280px) {
     .main {
         background-image: url('../../assets/images/main/main.webp');
-        min-width: 1280px;
         height: 800px;
         
     }      

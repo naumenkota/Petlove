@@ -1,9 +1,13 @@
+import Container from "./components/Container/Container";
 import MainPage from "./pages/MainPage/MainPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   return (
     <>
-      <MainPage />
+      <Container>
+        <NotFoundPage />
+      </Container>
     </>
   );
 }
