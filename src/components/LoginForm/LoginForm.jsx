@@ -5,6 +5,7 @@ import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import PasswordToggle from "../PasswordToggle/PasswordToggle";
 import { useState } from "react";
+import Title from "../Title/Title";
 
 const LoginFormSchema = yup.object().shape({
   email: yup
@@ -32,7 +33,7 @@ export default function LoginForm() {
   return (
     <div className={s.wrapper}>
       <div className={s.wrapper_title}>
-        <h2 className={s.title}>Log in</h2>
+        <Title>Log in</Title>
         <p className={s.text}>
           Welcome! Please enter your credentials to login to the platform:
         </p>
