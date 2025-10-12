@@ -18,8 +18,6 @@
     gap: 12px;
 }
 
-
-
 .text{
     font-weight: 500;
     font-size: 14px;
@@ -28,8 +26,7 @@
 }
 
 .form{
-    width: 100%;
-    
+    width: 100%;   
 }
 
 .inputGroup{
@@ -38,15 +35,12 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 10px;
-    
-    
+    gap: 10px;   
 }
 
 .inputWrapper{
     position: relative;
-    width: 100%;
-    
+    width: 100%;   
 }
 
 .input{
@@ -54,8 +48,7 @@
     border-radius: 30px;
     padding: 12px;
     width: 100%;
-    height: 42px;  
-    
+    height: 42px;   
 }
 
 .input::placeholder{
@@ -70,7 +63,7 @@
     margin-top: 40px;
     font-weight: 700;
     font-size: 14px;
-    line-height: 1.28571;
+    line-height: 1.28;
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--white);
@@ -88,7 +81,7 @@
     margin-top: 12px;
     font-weight: 500;
     font-size: 12px;
-    line-height: 1.16667;
+    line-height: 1.16;
     letter-spacing: -0.03em;
     color: rgba(38, 38, 38, 0.5);
 }
@@ -98,4 +91,53 @@
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: #f6b83d;
+}
+
+@media (min-width: 768px){
+    .wrapper{
+        padding: 71px 140px;
+        max-width: 704px;
+        height: 560px;
+        border-radius: 60px;
+    }
+    .wrapper_title{
+        gap: 16px;
+    }
+    .text{
+        font-size: 18px;
+        line-height: 1.22;
+    }
+    .form{
+        width: 424px;
+    }
+    .inputGroup{
+        margin-top: 32px;
+        gap: 16px;
+    }
+    .input{
+        padding: 16px;
+        height: 52px;
+    }
+    .btn{
+       margin-top: 64px; 
+       max-width: 424px;
+       height: 52px;
+       font-size: 16px;
+       line-height: 1.25;
+    }
+    .question{
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.42857;
+    }
+    
+    
+}
+
+@media (min-width: 1280px) {
+   .wrapper{
+        padding: 114px 84px;
+        max-width: 592px;
+        min-height: 654px;
+   }
 }
