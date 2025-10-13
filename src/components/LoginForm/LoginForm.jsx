@@ -9,6 +9,7 @@ import { LoginFormSchema } from "../../utils/LoginFormSchema.js";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
 
@@ -17,6 +18,8 @@ export default function LoginForm() {
     mode: "onChange",
     resolver: yupResolver(LoginFormSchema),
   });
+
+  const hasError = errors.email || errors.password;
 
   return (
     <div className={s.wrapper}>
@@ -27,7 +30,7 @@ export default function LoginForm() {
         </p>
       </div>
       <form className={s.form}>
-        <div className={s.inputGroup}>
+        <div className={`${s.inputGroup} ${hasError && s.inputGroupWithError}`}>
           <div className={s.inputWrapper}>
             <input
               {...register("email")}

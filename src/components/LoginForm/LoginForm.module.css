@@ -38,6 +38,10 @@
     gap: 10px;   
 }
 
+.inputGroupWithError {
+    gap: 20px;
+}
+
 .inputWrapper{
     position: relative;
     width: 100%;   
@@ -113,6 +117,9 @@
     .inputGroup{
         margin-top: 32px;
         gap: 16px;
+    }
+    .inputGroupWithError {
+        gap: 30px;
     }
     .input{
         padding: 16px;
