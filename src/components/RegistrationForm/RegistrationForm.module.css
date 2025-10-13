@@ -1,18 +1,18 @@
-.wrapper{
+.wrapper {
     background-color: var(--white);
     border-radius: 30px;
     max-width: 335px;
-    height: 422px;
+    min-height: 422px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 60px 20px;
+    padding: 20px;
 }
 
-.wrapper_title{
+.wrapper_title {
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     gap: 12px;
@@ -21,41 +21,41 @@
 .text{
     font-weight: 500;
     font-size: 14px;
-    line-height: 1.28;
+    line-height: 1.28571;
     letter-spacing: -0.02em;
 }
 
-.form{
-    width: 100%;   
+.form {
+    width: 100%;
 }
 
-.inputGroup{
-    margin-top: 24px;
+.inputGroup {
+    margin-top: 20px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 10px;   
+    gap: 10px;
 }
 
 .inputGroupWithError {
-    gap: 20px;
+    gap: 24px;
 }
 
-.inputWrapper{
+.inputWrapper {
     position: relative;
-    width: 100%;   
+    width: 100%;
 }
 
-.input{
+.input {
     border: 1px solid rgba(38, 38, 38, 0.15);
     border-radius: 30px;
     padding: 12px;
     width: 100%;
-    height: 42px;   
+    height: 42px;
 }
 
-.input::placeholder{
+.input::placeholder {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.28;
@@ -63,8 +63,8 @@
     color: rgba(38, 38, 38, 0.5);
 }
 
-.btn{
-    margin-top: 40px;
+.btn {
+    margin-top: 24px;
     font-weight: 700;
     font-size: 14px;
     line-height: 1.28;
@@ -81,7 +81,7 @@
     background-color: var(--yellow);
 }
 
-.question{
+.question {
     margin-top: 12px;
     font-weight: 500;
     font-size: 12px;
@@ -90,64 +90,71 @@
     color: rgba(38, 38, 38, 0.5);
 }
 
-.register{
+.login {
     font-weight: 700;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: #f6b83d;
 }
 
-@media (min-width: 768px){
-    .wrapper{
-        padding: 71px 140px;
+
+@media (min-width: 768px) {
+    .wrapper {
+        padding: 27px 140px;
         max-width: 704px;
-        height: 560px;
+        min-height: 560px;
         border-radius: 60px;
     }
-    .wrapper_title{
+
+    .wrapper_title {
         gap: 16px;
     }
-    .text{
+
+    .text {
         font-size: 18px;
         line-height: 1.22;
     }
-    .form{
+
+    .form {
         width: 424px;
     }
-    .inputGroup{
+
+    .inputGroup {
         margin-top: 32px;
         gap: 16px;
     }
+
     .inputGroupWithError {
         gap: 30px;
     }
-    .input{
+
+    .input {
         padding: 16px;
         height: 52px;
     }
-    .btn{
-       margin-top: 64px; 
-       max-width: 424px;
-       height: 52px;
-       font-size: 16px;
-       line-height: 1.25;
+
+    .btn {
+        margin-top: 32px;
+        max-width: 424px;
+        height: 52px;
+        font-size: 16px;
+        line-height: 1.25;
     }
-    .question{
+
+    .question {
         margin-top: 16px;
         font-size: 14px;
         line-height: 1.42;
     }
-    
-    
+
+
 }
 
 @media (min-width: 1280px) {
-   .wrapper{
-        padding: 114px 84px;
+    .wrapper {
+        padding: 68px 84px;
         max-width: 592px;
         min-height: 654px;
-   }
-   .btn{
-        margin-top: 34px;
-   }
+    }
+    
 }
