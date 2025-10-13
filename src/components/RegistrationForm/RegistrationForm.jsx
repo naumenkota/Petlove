@@ -7,8 +7,9 @@ import PasswordToggle from "../PasswordToggle/PasswordToggle";
 import { useState } from "react";
 import Title from "../Title/Title.jsx";
 
-export default function RegostrationForm() {
+export default function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
@@ -66,8 +67,8 @@ export default function RegostrationForm() {
               type={showPassword ? "text" : "password"}
             />
             <PasswordToggle
-              show={showPassword}
-              toggle={() => setShowPassword((prev) => !prev)}
+              show={showConfirmPassword}
+              toggle={() => setShowConfirmPassword((prev) => !prev)}
             />
             <ErrorMessage message={errors.password?.message} />
           </div>
