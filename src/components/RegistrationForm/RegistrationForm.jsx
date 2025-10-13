@@ -6,18 +6,36 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import PasswordToggle from "../PasswordToggle/PasswordToggle";
 import { useState } from "react";
 import Title from "../Title/Title.jsx";
+import { useDispatch } from "react-redux";
+import { registration } from "../../redux/api/api.js";
+import toast from "react-hot-toast";
 
 export default function RegistrationForm() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
     formState: { errors },
+    handleSubmit,
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(RegistrationFormSchema),
   });
+
+  const onSubmit = async (data) => {
+    console.log("Submitting:", data);
+
+    try {
+      const userData = { ...data };
+      delete userData.confirmPassword;
+      await dispatch(registration(userData)).unwrap();
+      toast.success("Registration successful!");
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
   const hasError = errors.email || errors.password || errors.name;
 
@@ -28,7 +46,7 @@ export default function RegistrationForm() {
         <p className={s.text}>Thank you for your interest in our platform.</p>
       </div>
 
-      <form className={s.form}>
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={`${s.inputGroup} ${hasError && s.inputGroupWithError}`}>
           <div className={s.inputWrapper}>
             <input
@@ -61,16 +79,16 @@ export default function RegistrationForm() {
           </div>
           <div className={s.inputWrapper}>
             <input
-              {...register("password")}
+              {...register("confirmPassword")}
               placeholder="Confirm password"
               className={s.input}
-              type={showPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
             />
             <PasswordToggle
               show={showConfirmPassword}
               toggle={() => setShowConfirmPassword((prev) => !prev)}
             />
-            <ErrorMessage message={errors.password?.message} />
+            <ErrorMessage message={errors.confirmPassword?.message} />
           </div>
         </div>
         <button type="submit" className={s.btn}>

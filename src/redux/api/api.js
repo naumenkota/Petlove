@@ -7,19 +7,15 @@ const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
-};
-
-export const register = createAsyncThunk(
-  "auth/register",
+export const registration = createAsyncThunk(
+  "auth/registration",
   async (userInfo, thunkApi) => {
     try {
       const response = await axios.post("/users/signup", userInfo);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.response?.data?.message);
     }
   }
 );

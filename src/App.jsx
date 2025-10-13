@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import Container from "./components/Container/Container";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
@@ -7,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <RegistrationForm />
       </Container>
