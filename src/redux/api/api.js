@@ -7,6 +7,10 @@ const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = "";
+};
+
 export const register = createAsyncThunk(
   "auth/register",
   async (userInfo, thunkApi) => {
@@ -32,7 +36,3 @@ export const login = createAsyncThunk(
     }
   }
 );
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
-};
