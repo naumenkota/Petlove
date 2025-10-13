@@ -25,8 +25,6 @@ export default function RegistrationForm() {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitting:", data);
-
     try {
       const userData = { ...data };
       delete userData.confirmPassword;

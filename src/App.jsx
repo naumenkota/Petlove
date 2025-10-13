@@ -11,6 +11,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <RegistrationForm />
+        <LoginForm />
       </Container>
     </>
   );
