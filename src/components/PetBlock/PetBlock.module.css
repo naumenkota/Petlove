@@ -7,6 +7,13 @@
     justify-content: center;   
 }
 
+.wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 @media (min-width: 768px) {
     .wrapper {
         max-width: 704px;
@@ -20,7 +27,7 @@
 
 @media (min-width: 1280px) {
     .wrapper {
-        max-width: 592px;
+        width: 592px;
         height: 654px;
         justify-content: center;
         padding-left: 0;

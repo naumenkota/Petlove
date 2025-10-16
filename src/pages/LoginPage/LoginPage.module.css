@@ -1,0 +1,20 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        gap: 21px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .wrapper {
+        flex-direction: row;
+        justify-content: center;
+        gap: 32px;
+    }
+}
+
