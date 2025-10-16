@@ -1,0 +1,28 @@
+.wrapper{
+    border-radius: 30px;
+    background-color: var(--yellow);
+    max-width: 335px;
+    height: 280px;
+    display: flex;
+    justify-content: center;   
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 704px;
+        height: 302px;
+        border-radius: 60px;
+        padding-left: 250px;
+        justify-content: flex-start;
+        
+    }
+}
+
+@media (min-width: 1280px) {
+    .wrapper {
+        max-width: 592px;
+        height: 654px;
+        justify-content: center;
+        padding-left: 0;
+    }
+}
