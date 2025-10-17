@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import { authReducer } from "./auth/authSlice";
+import { newsReducer } from "./news/newsSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -21,6 +22,7 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
+    news: newsReducer,
     auth: persistedAuthReducer,
   },
   middleware: (getDefaultMiddleware) =>

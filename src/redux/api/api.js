@@ -32,3 +32,17 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+export const getNews = createAsyncThunk(
+  "news/getNews",
+  async ({ page = 1, perPage = 6, keyword = "" }, thunkApi) => {
+    try {
+      const response = await axios.get("/news", {
+        params: { page, perPage, keyword },
+      });
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);

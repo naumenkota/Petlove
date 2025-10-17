@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MainPage from "./pages/MainPage/MainPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchField from "./components/SearchField/SearchField";
+import NewsList from "./components/NewsList/NewsList";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <Routes>
-          <Route path="/search" element={<SearchField />} />
+          <Route path="/search" element={<NewsList />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
