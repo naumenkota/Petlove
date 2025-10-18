@@ -46,3 +46,15 @@ export const getNews = createAsyncThunk(
     }
   }
 );
+
+export const getFriends = createAsyncThunk(
+  "friends/getFriends",
+  async (thunkApi) => {
+    try {
+      const response = await axios.get("/friends");
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
