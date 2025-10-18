@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchField from "./components/SearchField/SearchField";
 import NewsList from "./components/NewsList/NewsList";
+import Pagination from "./components/Pagination/Pagination";
 
 function App() {
   return (

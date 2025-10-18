@@ -3,15 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getNews } from "../../redux/api/api";
 import NewsItem from "../NewsItem/NewsItem";
+import Pagination from "../Pagination/Pagination";
+import { setPage } from "../../redux/news/newsSlice";
 
 export default function NewsList() {
   const dispatch = useDispatch();
-  const { items, isLoading, page, limit, keyword } = useSelector(
+  const { items, isLoading, page, perPage, keyword, totalPages } = useSelector(
     (state) => state.news
   );
+
   useEffect(() => {
-    dispatch(getNews({ page, limit, keyword }));
-  }, [dispatch, page, limit, keyword]);
+    dispatch(getNews({ page, perPage, keyword }));
+  }, [dispatch, page, perPage, keyword]);
+
+  const handlePageChange = (newPage) => {
+    dispatch(setPage(newPage));
+  };
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -30,6 +37,11 @@ export default function NewsList() {
           </li>
         ))}
       </ul>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
