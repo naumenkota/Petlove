@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 import NewsPage from "./pages/NewsPage/NewsPage";
+import FriendsList from "./components/FriendsList/FriendsList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <Routes>
+          <Route path="/friends" element={<FriendsList />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
