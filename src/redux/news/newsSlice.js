@@ -19,6 +19,10 @@ const newsSlice = createSlice({
     setPage(state, action) {
       state.page = action.payload;
     },
+    setKeyword: (state, action) => {
+      state.keyword = action.payload;
+      state.page = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,3 +44,4 @@ const newsSlice = createSlice({
 
 export const newsReducer = newsSlice.reducer;
 export const { setPage } = newsSlice.actions;
+export const { setKeyword } = newsSlice.actions;

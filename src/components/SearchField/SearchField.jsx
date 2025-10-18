@@ -1,21 +1,27 @@
 import s from "./SearchField.module.css";
 import SearchIcon from "../../assets/icons/search.svg?react";
 import CloseIcon from "../../assets/icons/cross-small.svg?react";
-import { useState } from "react";
+import { setKeyword } from "../../redux/news/newsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SearchField() {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const keyword = useSelector((state) => state.news.keyword);
+
   return (
     <div className={s.wrapper}>
       <input
         className={s.input}
         placeholder="Search"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={keyword}
+        onChange={(e) => dispatch(setKeyword(e.target.value))}
       />
       <SearchIcon className={s.icon} />
-      {value && (
-        <CloseIcon className={s.closeIcon} onClick={() => setValue("")} />
+      {keyword && (
+        <CloseIcon
+          className={s.closeIcon}
+          onClick={() => dispatch(setKeyword(""))}
+        />
       )}
     </div>
   );
