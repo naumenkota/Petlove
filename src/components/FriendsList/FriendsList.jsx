@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FriendsItem from "../FriendsItem/FriendsItem";
 import { getFriends } from "../../redux/api/api";
 import { useEffect } from "react";
+import s from "./FriendsList.module.css";
 
 export default function FriendsList() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function FriendsList() {
 
   return (
     <div>
-      <ul>
+      <ul className={s.list}>
         {items.map((friends) => (
           <li key={friends._id}>
             <FriendsItem
@@ -25,6 +26,7 @@ export default function FriendsList() {
               email={friends.email}
               address={friends.address}
               addressUrl={friends.addressUrl}
+              workDays={friends.workDays}
             />
           </li>
         ))}

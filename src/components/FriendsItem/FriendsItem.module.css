@@ -1,0 +1,117 @@
+.wrapper{
+    border-radius: 15px;
+    max-width: 335px;
+    width: 100%;
+    height: 184px;
+    background-color: var(--white);
+    display: flex;
+    gap: 14px;
+    padding: 40px 20px;
+    position: relative;
+    
+
+}
+
+.work_hours{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 30px;
+    background-color: var(--light-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 32px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    color: var(--yellow);
+}
+
+.img{
+    max-width: 80px;
+    width: 100%;
+    height: 80px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+}
+
+.address{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-style: normal;
+    max-width: 100%;   
+    
+}
+
+ .address_info{
+    display: flex;
+    flex-direction: row;
+    gap: 2px; 
+ }
+ 
+ .address_key, 
+ .no_data
+ {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);  
+ }
+
+.address_value{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    max-width: 100%;
+}
+ 
+
+@media (min-width: 768px){
+    .wrapper {
+        max-width: none;
+        width: 342px;
+        height: 196px;
+        gap: 16px;
+    }
+    .work_hours{
+        width: 100px;
+        height: 34px;
+        font-size: 14px;
+        line-height: 1.28;   
+    }
+    .img {
+        max-width: 90px;
+        height: 90px;
+    }
+    .info {
+        gap: 20px;
+    }
+    
+
+}
+
+@media (min-width: 1280px) {
+    .wrapper {
+        width: 371px;
+        gap: 20px;
+    }
+
+    .work_hours {
+        width: 102px;
+    }
+}
