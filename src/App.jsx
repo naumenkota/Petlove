@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import OurFriendsPage from "./pages/OurFriendsPage/OurFriendsPage";
+import NoticesList from "./components/NoticesList/NoticesList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <Routes>
+          <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -58,3 +58,18 @@ export const getFriends = createAsyncThunk(
     }
   }
 );
+
+export const getNotices = createAsyncThunk(
+  "notices/getNotices",
+  async ({ page = 1, perPage = 6, keyword = "" }, thunkApi) => {
+    try {
+      const response = await axios.get("/notices", {
+        params: { page, perPage, keyword },
+      });
+      console.log("Backend response:", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);

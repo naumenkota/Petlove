@@ -1,0 +1,171 @@
+.wrapper{
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 335px;
+    width: 100%;
+    height: 454px;
+    background-color: var(--white);
+}
+
+.img{
+    border-radius: 16px;
+    max-width: 287px;
+    width: 100%;
+    height: 178px;
+    object-fit: cover;
+}
+
+.title_wrapper{
+    margin-top: 24px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.popularity_wrapper{
+    display: flex;
+    gap: 1px;
+}
+
+.rate{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.info_wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.info_key{
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.info_value{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+}
+
+.comment{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    min-height: 36px;
+}
+
+.price{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+   
+}
+
+.price_none{
+    min-height: 20px;
+    margin-bottom: 12px;
+}
+
+
+.btn_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    max-width: 231px;
+    width: 100%;
+    height: 46px;
+    background-color: var(--yellow);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.03em;
+    color: var(--white);
+}
+
+.heart{
+    border-radius: 30px;
+    padding: 14px;
+    width: 46px;
+    height: 46px;
+    background-color: var(--light-yellow);
+}
+
+@media(min-width: 768px){
+    .wrapper{
+        width: 342px;
+        max-width: none;
+        height: 472px;
+    }
+    .img{
+        max-width: 294px;
+    }
+    .title {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+    .popularity_wrapper {
+        gap: 2px;
+    }
+    .comment {
+        margin-bottom: 24px;        
+    }
+    .price {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+    .price_none {
+        min-height: 24px;
+    }
+    .btn {
+        max-width: 236px;
+        height: 48px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    .heart {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media(min-width: 1280px) {
+    .wrapper {
+        width: 363px;
+    }
+    .img {
+        max-width: 315px;
+    }
+    .btn {
+        max-width: 257px;
+    }
+}
