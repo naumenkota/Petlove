@@ -49,7 +49,7 @@ export const getNews = createAsyncThunk(
 
 export const getFriends = createAsyncThunk(
   "friends/getFriends",
-  async (thunkApi) => {
+  async (_, thunkApi) => {
     try {
       const response = await axios.get("/friends");
       return response.data;
@@ -66,7 +66,43 @@ export const getNotices = createAsyncThunk(
       const response = await axios.get("/notices", {
         params: { page, perPage, keyword },
       });
-      console.log("Backend response:", response.data);
+
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getSexOption = createAsyncThunk(
+  "filters/getSexOption",
+  async (_, thunkApi) => {
+    try {
+      const response = await axios.get("/notices/sex");
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getCategoriesOption = createAsyncThunk(
+  "filters/getCategoriesOption",
+  async (_, thunkApi) => {
+    try {
+      const response = await axios.get("/notices/categories");
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getSpeciesOption = createAsyncThunk(
+  "filters/getSpeciesOption",
+  async (_, thunkApi) => {
+    try {
+      const response = await axios.get("/notices/species");
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response?.data?.message);
