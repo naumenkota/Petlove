@@ -3,16 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNotices } from "../../redux/api/api";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import { useEffect } from "react";
+import { setPage } from "../../redux/notices/noticesSlice.js";
+import Pagination from "../Pagination/Pagination.jsx";
 
 export default function NoticesList() {
   const dispatch = useDispatch();
-  const { items, isLoading } = useSelector((state) => state.notices);
+  const { items, isLoading, page, perPage, keyword, totalPages } = useSelector(
+    (state) => state.notices
+  );
 
   useEffect(() => {
-    dispatch(getNotices({}));
-  }, [dispatch]);
+    dispatch(getNotices({ page, perPage, keyword }));
+  }, [dispatch, page, perPage, keyword]);
 
-  console.log("Notices items:", items, "Loading:", isLoading);
+  const handlePageChange = (newPage) => {
+    dispatch(setPage(newPage));
+  };
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -25,6 +31,11 @@ export default function NoticesList() {
           </li>
         ))}
       </ul>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }

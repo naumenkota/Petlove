@@ -14,6 +14,11 @@ const initialState = {
 const noticesSlice = createSlice({
   name: "notices",
   initialState,
+  reducers: {
+    setPage(state, action) {
+      state.page = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getNotices.pending, (state) => {
@@ -33,3 +38,4 @@ const noticesSlice = createSlice({
 });
 
 export const noticesReducer = noticesSlice.reducer;
+export const { setPage } = noticesSlice.actions;
