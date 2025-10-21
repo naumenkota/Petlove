@@ -5,7 +5,6 @@ const initialState = {
   page: 1,
   perPage: 6,
   totalPages: 1,
-  keyword: "",
   items: [],
   isLoading: false,
   errorMessage: null,

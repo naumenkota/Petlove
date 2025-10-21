@@ -61,10 +61,13 @@ export const getFriends = createAsyncThunk(
 
 export const getNotices = createAsyncThunk(
   "notices/getNotices",
-  async ({ page = 1, perPage = 6, keyword = "" }, thunkApi) => {
+  async (
+    { page = 1, perPage = 6, keyword = "", category, sex, species },
+    thunkApi
+  ) => {
     try {
       const response = await axios.get("/notices", {
-        params: { page, perPage, keyword },
+        params: { page, perPage, keyword, category, sex, species },
       });
 
       return response.data;
@@ -103,6 +106,30 @@ export const getSpeciesOption = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get("/notices/species");
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getCities = createAsyncThunk(
+  "cities/getCities",
+  async ({ keyword }, thunkApi) => {
+    try {
+      const response = await axios.get("/cities", { params: { keyword } });
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getLocations = createAsyncThunk(
+  "locations/getLocations",
+  async (_, thunkApi) => {
+    try {
+      const response = await axios.get("/cities/locations");
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response?.data?.message);

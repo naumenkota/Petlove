@@ -1,23 +1,39 @@
 import s from "./SearchField.module.css";
 import SearchIcon from "../../assets/icons/search.svg?react";
 import CloseIcon from "../../assets/icons/cross-small.svg?react";
-import { setKeyword } from "../../redux/news/newsSlice";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { setKeyword as setNewsKeyword } from "../../redux/news/newsSlice";
+import { setKeyword as setNoticesKeyword } from "../../redux/filter/filterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
-export default function SearchField() {
+export default function SearchField({ type }) {
   const dispatch = useDispatch();
 
-  const [inputValue, setInputValue] = useState("");
+  const keyword = useSelector((state) =>
+    type === "news" ? state.news.keyword : state.filters.keyword
+  );
+  const [inputValue, setInputValue] = useState(keyword);
+
+  useEffect(() => {
+    setInputValue(keyword);
+  }, [keyword]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setKeyword(inputValue));
+    if (type === "news") {
+      dispatch(setNewsKeyword(inputValue));
+    } else {
+      dispatch(setNoticesKeyword(inputValue));
+    }
   };
 
   const handleClear = () => {
     setInputValue("");
-    dispatch(setKeyword(""));
+    if (type === "news") {
+      dispatch(setNewsKeyword(""));
+    } else {
+      dispatch(setNoticesKeyword(""));
+    }
   };
 
   return (

@@ -8,7 +8,7 @@ export default function NewsPage() {
     <div className={s.wrapper}>
       <div className={s.search_wrapper}>
         <Title>News</Title>
-        <SearchField />
+        <SearchField type="news" />
       </div>
       <NewsList />
     </div>

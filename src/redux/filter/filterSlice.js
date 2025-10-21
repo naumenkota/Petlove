@@ -14,7 +14,7 @@ const initialState = {
   selectedCategory: "",
   sortBy: "popularity",
   location: null,
-  keyword: "",
+  с: "",
   isLoading: false,
   errorMessage: null,
 };
@@ -57,7 +57,7 @@ const filtersSlice = createSlice({
       })
       .addCase(getSexOption.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.sexOptions = action.payload;
+        state.sexOption = action.payload;
       })
       .addCase(getSexOption.rejected, (state, action) => {
         state.isLoading = false;
@@ -68,7 +68,7 @@ const filtersSlice = createSlice({
       })
       .addCase(getSpeciesOption.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.speciesOptions = action.payload;
+        state.speciesOption = action.payload;
       })
       .addCase(getSpeciesOption.rejected, (state, action) => {
         state.isLoading = false;
