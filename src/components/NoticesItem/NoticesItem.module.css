@@ -7,6 +7,8 @@
     background-color: var(--white);
 }
 
+
+
 .img{
     border-radius: 16px;
     max-width: 287px;
@@ -31,6 +33,10 @@
 .popularity_wrapper{
     display: flex;
     gap: 1px;
+}
+
+.icon{
+    color: var(--yellow);
 }
 
 .rate{

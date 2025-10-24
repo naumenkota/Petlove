@@ -9,27 +9,22 @@ import NoticesFilters from "../NoticesFilters/NoticesFilters.jsx";
 import authSelectors from "../../redux/auth/authSelectors";
 import ModalNotice from "../ModalNotice/ModalNotice.jsx";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
+import Modal from "../Modal/Modal.jsx";
 
 export default function NoticesList() {
-  const isAuth = useSelector(authSelectors.selectIsLoggedIn);
   const [selectedNotice, setSelectedNotice] = useState(null);
-  const [isModalNoticeOpen, setIsModalNoticeOpen] = useState(false);
-  const [isModalAttentionOpen, setIsModalAttentionOpen] = useState(false);
-  const handleLearnMore = async (noticeId) => {
-    if (!isAuth) {
-      setIsModalAttentionOpen(true);
-      return;
-    }
 
-    try {
-      const response = await fetch(`/api/notices/${noticeId}`);
-      const data = await response.json();
-      setSelectedNotice(data);
-      setIsModalNoticeOpen(true);
-    } catch (error) {
-      console.error("Failed to fetch notice details:", error);
-    }
+  const handleLearnMore = (notices) => {
+    setSelectedNotice(notices);
   };
+
+  const handleCloseModal = () => {
+    setSelectedNotice(null);
+  };
+
+  const isAuth = useSelector(authSelectors.selectIsLoggedIn);
+  console.log("isAuth:", isAuth);
+
   const dispatch = useDispatch();
   const { items, isLoading, page, perPage, totalPages } = useSelector(
     (state) => state.notices
@@ -96,16 +91,9 @@ export default function NoticesList() {
         onPageChange={handlePageChange}
       />
 
-      {isModalNoticeOpen && selectedNotice && (
-        <ModalNotice
-          notices={selectedNotice}
-          onClose={() => setIsModalNoticeOpen(false)}
-        />
-      )}
-
-      {isModalAttentionOpen && (
-        <ModalAttention onClose={() => setIsModalAttentionOpen(false)} />
-      )}
+      <Modal isOpen={!!selectedNotice} onClose={handleCloseModal}>
+        {isAuth ? <ModalNotice notices={selectedNotice} /> : <ModalAttention />}
+      </Modal>
     </>
   );
 }

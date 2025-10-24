@@ -9,7 +9,7 @@ export default function NoticesItem({ notices, onLearnMore }) {
       <div className={s.title_wrapper}>
         <h3 className={s.title}>{notices.title}</h3>
         <div className={s.popularity_wrapper}>
-          <StarIcon />
+          <StarIcon className={s.icon} />
           <p className={s.rate}>{Math.floor(notices.popularity / 1000)}</p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function NoticesItem({ notices, onLearnMore }) {
         <button
           type="button"
           className={s.btn}
-          onClick={() => onLearnMore(notices.id)}
+          onClick={() => onLearnMore(notices)}
         >
           Learn more
         </button>
