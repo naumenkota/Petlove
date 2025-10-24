@@ -5,19 +5,99 @@ import {
   setSelectedSex,
   setSelectedSpecies,
   setSelectedCategory,
+  setSortBy,
 } from "../../redux/filter/filterSlice";
 import {
   getSexOption,
   getCategoriesOption,
   getSpeciesOption,
   getCities,
-  getLocations,
 } from "../../redux/api/api";
 import { useEffect } from "react";
 import AsyncSelect from "react-select/async";
 import { setSelectedCity } from "../../redux/cities/citiesSlice";
 
 export default function NoticesFilters() {
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "10px 12px",
+      maxWidth: "295px",
+      width: "100%",
+      height: "42px",
+      boxSizing: "border-box",
+      backgroundColor: "var(--white)",
+      borderRadius: "30px",
+      border: "none",
+      fontWeight: 500,
+      fontSize: "14px",
+      lineHeight: 1.28,
+      letterSpacing: "-0.03em",
+      outline: "none",
+      boxShadow: "none",
+      "&:hover": {
+        border: "none",
+      },
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#999",
+      fontWeight: 500,
+      fontSize: "14px",
+      lineHeight: 1.28,
+      letterSpacing: "-0.03em",
+      textTransform: "capitalize",
+    }),
+    input: (provided) => ({
+      ...provided,
+      fontWeight: 500,
+      fontSize: "14px",
+      lineHeight: 1.28,
+      letterSpacing: "-0.03em",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      fontWeight: 500,
+      fontSize: "14px",
+      lineHeight: 1.28,
+      letterSpacing: "-0.03em",
+      backgroundColor: state.isSelected ? "#f0f0f0" : "var(--white)",
+      color: "#000",
+      textTransform: "capitalize",
+      "&:hover": {
+        backgroundColor: "#f5f5f5",
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: "12px",
+      marginTop: "4px",
+      maxWidth: "295px",
+      width: "100%",
+    }),
+    dropdownIndicator: () => ({
+      display: "none", // Прибираємо стандартну стрілку
+    }),
+    indicatorSeparator: () => ({
+      display: "none", // Прибираємо роздільник
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: 0,
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      fontWeight: 500,
+      fontSize: "14px",
+      lineHeight: 1.28,
+      letterSpacing: "-0.03em",
+      textTransform: "capitalize",
+    }),
+  };
+
   const dispatch = useDispatch();
   const sexOption = useSelector((state) => state.filters.sexOption);
   const selectedSex = useSelector((state) => state.filters.selectedSex);
@@ -30,6 +110,7 @@ export default function NoticesFilters() {
     (state) => state.filters.selectedCategory
   );
   const selectedCity = useSelector((state) => state.cities.selectedCity);
+  const selectedSort = useSelector((state) => state.filters.sortBy);
 
   const fetchCities = async (inputValue) => {
     if (!inputValue || inputValue.length < 3) return [];
@@ -62,55 +143,87 @@ export default function NoticesFilters() {
     dispatch(setSelectedCategory(e.target.value));
   };
 
+  const capitalizeFirstWord = (str) => {
+    if (!str) return str;
+    return str
+      .split(" ")
+      .map((word, index) =>
+        index === 0
+          ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          : word.toLowerCase()
+      )
+      .join(" ");
+  };
+
   return (
     <div className={s.wrapper}>
-      <SearchField type="notices" />
+      <div className={s.select_wrapper}>
+        <SearchField type="notices" />
 
-      <select value={selectedCategory} onChange={handleChangeCategory}>
-        <option value="" disabled hidden>
-          Category
-        </option>
-        <option value="all">Show all</option>
-        {categoriesOption.map((category) => (
-          <option key={category} value={category}>
-            {category}
+        <select value={selectedCategory} onChange={handleChangeCategory}>
+          <option value="" disabled hidden>
+            Category
           </option>
-        ))}
-      </select>
+          <option value="all">Show all</option>
+          {categoriesOption.map((category) => (
+            <option key={category} value={category}>
+              {capitalizeFirstWord(category)}
+            </option>
+          ))}
+        </select>
 
-      <select value={selectedSex} onChange={handleChangeSex}>
-        <option value="" disabled hidden>
-          By gender
-        </option>
-        <option value="all">Show all</option>
-        {sexOption.map((sex) => (
-          <option key={sex} value={sex}>
-            {sex}
+        <select value={selectedSex} onChange={handleChangeSex}>
+          <option value="" disabled hidden>
+            By gender
           </option>
-        ))}
-      </select>
+          <option value="all">Show all</option>
+          {sexOption.map((sex) => (
+            <option key={sex} value={sex}>
+              {capitalizeFirstWord(sex)}
+            </option>
+          ))}
+        </select>
 
-      <select value={selectedSpecies} onChange={handleChangeSpecies}>
-        <option value="" disabled hidden>
-          By type
-        </option>
-        <option value="all">Show all</option>
-        {speciesOption.map((species) => (
-          <option key={species} value={species}>
-            {species}
+        <select
+          value={selectedSpecies}
+          onChange={handleChangeSpecies}
+          className={s.select_type}
+        >
+          <option value="" disabled className={s.placeholder}>
+            By type
           </option>
-        ))}
-      </select>
+          <option value="all">Show all</option>
+          {speciesOption.map((species) => (
+            <option key={species} value={species}>
+              {capitalizeFirstWord(species)}
+            </option>
+          ))}
+        </select>
 
-      <AsyncSelect
-        cacheOptions
-        defaultOptions
-        loadOptions={fetchCities}
-        value={selectedCity}
-        onChange={(city) => dispatch(setSelectedCity(city))}
-        placeholder="Select city..."
-        isClearable
-      />
+        <AsyncSelect
+          className={s.select_loc}
+          cacheOptions
+          defaultOptions
+          loadOptions={fetchCities}
+          value={selectedCity}
+          onChange={(city) => dispatch(setSelectedCity(city))}
+          placeholder="Location"
+          isClearable
+          styles={customStyles}
+        />
+      </div>
+      <div className={s.line}></div>
+      <div className={s.sortButtons}>
+        {["Popular", "Unpopular", "Cheap", "Expensive"].map((sort) => (
+          <button
+            key={sort}
+            className={sort === selectedSort ? s.active : s.not_active}
+            onClick={() => dispatch(setSortBy(sort))}
+          >
+            {sort}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

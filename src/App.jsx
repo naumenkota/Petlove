@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import OurFriendsPage from "./pages/OurFriendsPage/OurFriendsPage";
 import NoticesList from "./components/NoticesList/NoticesList";
+import ModalAttention from "./components/ModalAttention/ModalAttention";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <Routes>
-          <Route path="/notices" element={<NoticesList />} />
+          <Route path="/notices" element={<ModalAttention />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />

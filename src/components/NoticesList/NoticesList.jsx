@@ -12,14 +12,19 @@ export default function NoticesList() {
   const { items, isLoading, page, perPage, totalPages } = useSelector(
     (state) => state.notices
   );
-  const { selectedCategory, selectedSex, selectedSpecies, keyword } =
-    useSelector((state) => state.filters);
+  const {
+    selectedCategory,
+    selectedSex,
+    selectedSpecies,
+    keyword,
+    byPopularity,
+    byPrice,
+  } = useSelector((state) => state.filters);
   const { selectedCity } = useSelector((state) => state.cities);
 
-  const filteredNotices = items.filter((notice) => {
-    if (!selectedCity) return true;
-    return notice.location === selectedCity.value;
-  });
+  const filteredNotices = selectedCity
+    ? items.filter((notice) => notice.locationId === selectedCity.value)
+    : items;
 
   useEffect(() => {
     dispatch(
@@ -30,7 +35,9 @@ export default function NoticesList() {
         sex: selectedSex,
         species: selectedSpecies,
         keyword: keyword,
-        location: selectedCity?.value,
+        byPopularity,
+        byPrice,
+        locationId: selectedCity?.value,
       })
     );
   }, [
@@ -39,6 +46,8 @@ export default function NoticesList() {
     selectedSex,
     selectedSpecies,
     selectedCity,
+    byPopularity,
+    byPrice,
     keyword,
     page,
     perPage,

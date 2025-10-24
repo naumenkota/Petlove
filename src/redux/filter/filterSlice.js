@@ -12,9 +12,8 @@ const initialState = {
   selectedSex: "",
   selectedSpecies: "",
   selectedCategory: "",
-  sortBy: "popularity",
-  location: null,
-  с: "",
+  byPopularity: null,
+  byPrice: null,
   isLoading: false,
   errorMessage: null,
 };
@@ -32,14 +31,39 @@ const filtersSlice = createSlice({
     setSelectedCategory: (state, action) => {
       state.selectedCategory = action.payload;
     },
-    setSortBy: (state, action) => {
-      state.sortBy = action.payload;
-    },
-    setLocation: (state, action) => {
-      state.location = action.payload;
-    },
     setKeyword: (state, action) => {
       state.keyword = action.payload;
+    },
+    setByPopularity(state, action) {
+      state.byPopularity = action.payload;
+    },
+    setByPrice(state, action) {
+      state.byPrice = action.payload;
+    },
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
+
+      switch (action.payload) {
+        case "popular":
+          state.byPopularity = false;
+          state.byPrice = null;
+          break;
+        case "unpopular":
+          state.byPopularity = true;
+          state.byPrice = null;
+          break;
+        case "cheap":
+          state.byPrice = true;
+          state.byPopularity = null;
+          break;
+        case "expensive":
+          state.byPrice = false;
+          state.byPopularity = null;
+          break;
+        default:
+          state.byPopularity = null;
+          state.byPrice = null;
+      }
     },
     resetFilters: (state) => {
       state.selectedSex = "";
@@ -93,7 +117,6 @@ export const {
   setSelectedSpecies,
   setSelectedCategory,
   setSortBy,
-  setLocation,
   setKeyword,
   resetFilters,
 } = filtersSlice.actions;
