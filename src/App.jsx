@@ -16,7 +16,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Container>
         <Routes>
-          <Route path="/notices" element={<ModalAttention />} />
+          <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />

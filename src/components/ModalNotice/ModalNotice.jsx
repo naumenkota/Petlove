@@ -1,17 +1,19 @@
-import s from "./NoticesItem.module.css";
-import StarIcon from "../../assets/icons/star.svg?react";
-import HeartIcon from "../../assets/icons/heart.svg?react";
+import s from "./ModalNotice.module.css";
+import CloseIcon from "../../assets/icons/close.svg?react";
+import { useState } from "react";
 
-export default function NoticesItem({ notices, onLearnMore }) {
+export default function ModalNotice({ notices }) {
+  const [isOpen, setIsOpen] = useState(true);
+  if (!isOpen) return null;
+
   return (
     <div className={s.wrapper}>
+      <CloseIcon className={s.close} onClick={() => setIsOpen(false)} />
       <img src={notices.imgURL} alt={notices.title} className={s.img} />
-      <div className={s.title_wrapper}>
-        <h3 className={s.title}>{notices.title}</h3>
-        <div className={s.popularity_wrapper}>
-          <StarIcon />
-          <p className={s.rate}>{Math.floor(notices.popularity / 1000)}</p>
-        </div>
+      <h3 className={s.title}>{notices.title}</h3>
+      <div className={s.popularity_wrapper}>
+        <StarIcon />
+        <p className={s.rate}>{Math.floor(notices.popularity / 1000)}</p>
       </div>
       <div className={s.info_wrapper}>
         <div className={s.info}>
@@ -35,12 +37,8 @@ export default function NoticesItem({ notices, onLearnMore }) {
           <p className={s.info_key}>Species</p>
           <p className={s.info_value}>{notices.species}</p>
         </div>
-
-        <div className={s.info}>
-          <p className={s.info_key}>Category</p>
-          <p className={s.info_value}>{notices.category}</p>
-        </div>
       </div>
+
       <p className={s.comment}>{notices.comment}</p>
 
       {notices.price !== undefined ? (
@@ -49,16 +47,8 @@ export default function NoticesItem({ notices, onLearnMore }) {
         <div className={s.price_none} />
       )}
 
-      <div className={s.btn_wrapper}>
-        <button
-          type="button"
-          className={s.btn}
-          onClick={() => onLearnMore(notices.id)}
-        >
-          Learn more
-        </button>
-        <HeartIcon className={s.heart} />
-      </div>
+      <button>Add to</button>
+      <button> Contact</button>
     </div>
   );
 }
