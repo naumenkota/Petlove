@@ -10,8 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-
 }
 
 .category {
@@ -31,6 +29,9 @@
     position:absolute;
 
 }
+.img_wrapper{
+    margin-bottom: 20px;
+}
 
 .img {
     border-radius: 16px;
@@ -38,12 +39,13 @@
     height: 120px;
     border-radius: 100px;
     object-fit: cover;
+   
 }
 
 .close{
     position: absolute;
-    top: 26px;
-    right: 26px;
+    top: 20px;
+    right: 20px;
 }
 
 .content{
@@ -62,7 +64,15 @@
 
 .popularity_wrapper{
     display: flex;
+    align-items: center;
     margin-bottom: 24px;
+    gap: 4px; 
+}
+
+.rate{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.42;
 }
 
 .info_wrapper{
@@ -71,6 +81,12 @@
     justify-content: space-between;
     margin-bottom: 16px;
     max-width: 243px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .info_key{
@@ -102,7 +118,7 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 1.25;
-   
+    margin-bottom: 20px; 
 }
 
 .btn_wrapper{
@@ -150,4 +166,47 @@
 
 .starInactive {
     color: #f4f4f4;
+}
+
+@media(min-width: 768px){
+    .wrapper {
+        max-width: none;
+        width: 473px;
+        height: 510px;
+        padding: 40px 71px;
+    }
+    .category {
+        width: 52px;
+        height: 34px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+    .img {
+        width: 150px;
+        height: 150px;     
+    }
+    .img_wrapper{
+        margin-bottom: 16px;
+    }
+    .title {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+    .price {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+    .btn_wrapper{
+        max-width: 330px;   
+    }
+    .btn_add {
+        max-width: 160px;
+        height: 48px;    
+    }
+    
+    .btn_contact {
+        max-width: 160px;
+        height: 48px;    
+    }
+
 }

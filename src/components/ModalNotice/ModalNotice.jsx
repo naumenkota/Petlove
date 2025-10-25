@@ -7,7 +7,7 @@ export default function ModalNotice({ notices }) {
   const [isOpen, setIsOpen] = useState(true);
   if (!isOpen) return null;
 
-  const filledStars = Math.min(Math.floor(notices.popularity / 1000), 5);
+  const rate = Math.min(Math.floor(notices.popularity / 1000), 5);
 
   return (
     <div className={s.wrapper}>
@@ -25,10 +25,10 @@ export default function ModalNotice({ notices }) {
           {[...Array(5)].map((_, index) => (
             <StarIcon
               key={index}
-              className={index < filledStars ? s.starActive : s.starInactive}
+              className={index < rate ? s.starActive : s.starInactive}
             />
           ))}
-          <p className={s.rate}>{filledStars}</p>
+          <p className={s.rate}>{rate}</p>
         </div>
 
         <div className={s.info_wrapper}>
