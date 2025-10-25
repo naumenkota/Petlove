@@ -1,10 +1,15 @@
 import s from "./Nav.module.css";
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import MenuIcon from "../../assets/icons/menu.svg?react";
 import CloseIcon from "../../assets/icons/close.svg?react";
+import AuthNav from "../AuthNav/AuthNav";
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const active = ({ isActive }) => {
+    return clsx(s.navLink, isActive && s.active);
+  };
 
   return (
     <nav className={s.nav}>
@@ -20,22 +25,24 @@ export default function Nav() {
         </button>
 
         <ul className={s.list}>
-          <li className={s.list_item}>
-            <NavLink to="/news" end>
+          <li>
+            <NavLink to="/news" end className={active}>
               News
             </NavLink>
           </li>
-          <li className={s.list_item}>
-            <NavLink to="/notices" end>
+          <li>
+            <NavLink to="/notices" end className={active}>
               Find pet
             </NavLink>
           </li>
-          <li className={s.list_item}>
-            <NavLink to="/friends" end>
+          <li>
+            <NavLink to="/friends" end className={active}>
               Our friends
             </NavLink>
           </li>
         </ul>
+
+        <AuthNav />
       </div>
     </nav>
   );
