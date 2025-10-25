@@ -1,4 +1,5 @@
 import s from "./Nav.module.css";
+import { useMediaQuery } from "react-responsive";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -10,19 +11,31 @@ export default function Nav() {
   const active = ({ isActive }) => {
     return clsx(s.navLink, isActive && s.active);
   };
+  const tab = useMediaQuery({ minWidth: 768 });
+  const desktop = useMediaQuery({ minWidth: 1280 });
 
   return (
     <nav className={s.nav}>
-      {!isOpen && (
-        <button onClick={() => setIsOpen(true)} className={s.burger}>
-          <MenuIcon />
-        </button>
-      )}
+      <div className={s.wrapper}>
+        {!isOpen && tab && !desktop && (
+          <div className={s.auth_wrapper}>
+            <AuthNav />
+          </div>
+        )}
 
-      <div className={`${s.menuWrapper} ${isOpen ? s.open : ""}`}>
-        <button onClick={() => setIsOpen(false)} className={s.close}>
-          <CloseIcon />
-        </button>
+        {!isOpen && !desktop && (
+          <button onClick={() => setIsOpen(true)} className={s.burger}>
+            <MenuIcon />
+          </button>
+        )}
+      </div>
+
+      <div className={`${s.menuWrapper} ${isOpen || desktop ? s.open : ""}`}>
+        {!desktop && (
+          <button onClick={() => setIsOpen(false)} className={s.close}>
+            <CloseIcon />
+          </button>
+        )}
 
         <ul className={s.list}>
           <li>
