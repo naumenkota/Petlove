@@ -10,19 +10,22 @@ import OurFriendsPage from "./pages/OurFriendsPage/OurFriendsPage";
 import NoticesList from "./components/NoticesList/NoticesList";
 import ModalAttention from "./components/ModalAttention/ModalAttention";
 
+import MainLayout from "./components/MainLayout/MainLayout";
+
 function App() {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <Container>
-        <Routes>
+
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
           <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </Container>
+        </Route>
+      </Routes>
     </>
   );
 }
