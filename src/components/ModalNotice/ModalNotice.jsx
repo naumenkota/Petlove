@@ -1,17 +1,15 @@
 import s from "./ModalNotice.module.css";
 import CloseIcon from "../../assets/icons/close.svg?react";
 import StarIcon from "../../assets/icons/star.svg?react";
-import { useState } from "react";
 
-export default function ModalNotice({ notices }) {
-  const [isOpen, setIsOpen] = useState(true);
-  if (!isOpen) return null;
-
+export default function ModalNotice({ notices, onClose }) {
   const rate = Math.min(Math.floor(notices.popularity / 1000), 5);
 
   return (
     <div className={s.wrapper}>
-      <CloseIcon className={s.close} onClick={() => setIsOpen(false)} />
+      <button className={s.close} onClick={onClose}>
+        <CloseIcon />
+      </button>
 
       <div className={s.img_wrapper}>
         <p className={s.category}>{notices.category}</p>

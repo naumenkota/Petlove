@@ -2,16 +2,14 @@ import s from "./ModalAttention.module.css";
 import CloseIcon from "../../assets/icons/close.svg?react";
 import dog from "../../assets/images/dog/dog.webp";
 import dog2x from "../../assets/images/dog/dog2x.webp";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ModalAttention() {
-  const [isOpen, setIsOpen] = useState(true);
-  if (!isOpen) return null;
-
+export default function ModalAttention(onClose) {
   return (
     <div className={s.wrapper}>
-      <CloseIcon className={s.close} onClick={() => setIsOpen(false)} />
+      <button className={s.close} onClick={onClose}>
+        <CloseIcon />
+      </button>
 
       <div className={s.dog_wrapper}>
         <picture>

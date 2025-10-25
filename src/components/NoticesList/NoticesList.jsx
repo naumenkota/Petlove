@@ -92,7 +92,11 @@ export default function NoticesList() {
       />
 
       <Modal isOpen={!!selectedNotice} onClose={handleCloseModal}>
-        {isAuth ? <ModalNotice notices={selectedNotice} /> : <ModalAttention />}
+        {isAuth ? (
+          <ModalNotice notices={selectedNotice} onClose={handleCloseModal} />
+        ) : (
+          <ModalAttention onClose={handleCloseModal} />
+        )}
       </Modal>
     </>
   );
