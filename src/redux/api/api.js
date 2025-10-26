@@ -49,6 +49,17 @@ export const logout = createAsyncThunk(
   }
 );
 
+export const getUser = createAsyncThunk("auth/getUser", async (_, thunkApi) => {
+  const token = thunkApi.getState().auth.token;
+  setAuthHeader(token);
+  try {
+    const response = await axios.get("/users/current/full");
+    return response.data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.response?.data?.message);
+  }
+});
+
 export const getNews = createAsyncThunk(
   "news/getNews",
   async ({ page = 1, perPage = 6, keyword = "" }, thunkApi) => {

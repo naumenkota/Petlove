@@ -10,6 +10,7 @@ export default function ModalApproveAction({ onClose }) {
 
   const handleExit = () => {
     dispatch(logout());
+    onClose();
   };
 
   return (

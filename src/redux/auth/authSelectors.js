@@ -3,6 +3,7 @@ const selectName = (state) => state.auth.user.name;
 const selectEmail = (state) => state.auth.user.email;
 const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 const selectIsRefreshing = (state) => state.auth.isRefreshing;
+const selectUserAvatar = (state) => state.auth.user.avatar;
 
 export default {
   selectToken,
@@ -10,4 +11,5 @@ export default {
   selectEmail,
   selectIsLoggedIn,
   selectIsRefreshing,
+  selectUserAvatar,
 };
