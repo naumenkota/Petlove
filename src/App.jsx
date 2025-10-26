@@ -12,6 +12,7 @@ import ModalAttention from "./components/ModalAttention/ModalAttention";
 
 import MainLayout from "./components/MainLayout/MainLayout";
 import ModalApproveAction from "./components/ModalApproveAction/ModalApproveAction";
+import LogOutBtn from "./components/LogOutBtn/LogOutBtn";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
-        <Route path="/modal" element={<ModalApproveAction />} />
+        <Route path="/modal" element={<LogOutBtn />} />
         <Route path="/" element={<MainLayout />}>
           <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
