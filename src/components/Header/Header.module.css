@@ -1,8 +1,9 @@
 .wrapper{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     padding-top: 28px;
+    width: 100%;
     
     
 }
@@ -10,7 +11,7 @@
 @media(min-width:768px){
     .wrapper {
         padding-top: 32px;  
-        gap: 271px;
+       
     }
      
 }
@@ -18,7 +19,7 @@
 @media(min-width:1280px) {
     .wrapper {
         padding-top: 32px;
-        gap: 313px;
+       
     }
 
 }

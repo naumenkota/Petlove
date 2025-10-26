@@ -20,7 +20,6 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <Routes>
-        <Route path="/modal" element={<UserNav />} />
         <Route path="/" element={<MainLayout />}>
           <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
