@@ -60,6 +60,25 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkApi) => {
   }
 });
 
+export const updateUser = createAsyncThunk(
+  "auth/updateUser",
+  async (formData, thunkApi) => {
+    const token = thunkApi.getState().auth.token;
+    setAuthHeader(token);
+    try {
+      const response = await axios.patch("/users/current/edit", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Бекенд повернув:", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
 export const getNews = createAsyncThunk(
   "news/getNews",
   async ({ page = 1, perPage = 6, keyword = "" }, thunkApi) => {

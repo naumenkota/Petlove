@@ -13,6 +13,7 @@ import ModalAttention from "./components/ModalAttention/ModalAttention";
 import MainLayout from "./components/MainLayout/MainLayout";
 import ModalApproveAction from "./components/ModalApproveAction/ModalApproveAction";
 import UserNav from "./components/UserNav/UserNav";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainLayout />}>
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/notices" element={<NoticesList />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />

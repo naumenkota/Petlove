@@ -21,7 +21,7 @@ export default function ModalApproveAction({ onClose }) {
 
       <div className={s.cat_wrapper}>
         <picture>
-          <source srcset={`${cat} 1x, ${cat2x} 2x`} type="image/webp" />
+          <source srcSet={`${cat} 1x, ${cat2x} 2x`} type="image/webp" />
           <img src={cat} alt="Cat" />
         </picture>
       </div>

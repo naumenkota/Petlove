@@ -1,0 +1,119 @@
+.wrapper{
+    background-color: var(--white);
+    border-radius: 30px;
+    max-width: 335px;
+    width: 100%;
+    height: 473px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.close_btn{
+    background-color: inherit;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.avatarPreview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-top: 20px;
+}
+
+.previewImg{
+    border-radius: 100px;
+    width: 80px;
+    height: 80px;
+}
+
+.form {
+    width: 100%;
+}
+
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputGroupWithError {
+    gap: 20px;
+}
+
+
+.avatarInputGroup{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+
+.input_avatar{
+    border: 1px solid #f6b83d;
+    border-radius: 30px;
+    padding: 13px 12px;
+    max-width: 161px;
+    width: 100%;
+    height: 42px;
+}
+
+.uploadBtn{
+    max-width: 126px;
+    width: 100%;
+    height: 42px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--light-yellow);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    border-radius: 30px;
+}
+
+.input{
+    border: 1px solid #f6b83d;
+    border-radius: 30px;
+    padding: 12px;
+    width: 100%;
+    height: 42px;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    width: 100%;
+    height: 42px;
+    background-color: var(--yellow);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.03em;
+    margin-top: 21px;
+}
