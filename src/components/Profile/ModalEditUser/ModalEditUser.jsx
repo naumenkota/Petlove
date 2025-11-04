@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import authSelectors from "../../../redux/auth/authSelectors";
 import { useEffect, useState } from "react";
 import { uploadToCloudinary } from "../../../utils/uploadCloudinary.js";
+import UserIcon from "../../../assets/icons/user.svg?react";
 
 export default function ModalEditUser({ onClose }) {
   const dispatch = useDispatch();
@@ -104,7 +105,9 @@ export default function ModalEditUser({ onClose }) {
         {preview ? (
           <img src={preview} alt="Avatar preview" className={s.previewImg} />
         ) : (
-          <div className={s.placeholder}>No avatar</div>
+          <div className={s.userImg}>
+            <UserIcon />
+          </div>
         )}
       </div>
 

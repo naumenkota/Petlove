@@ -118,13 +118,28 @@
     color: var(--white);
 }
 
-.heart{
-    border-radius: 30px;
-    padding: 14px;
+.heart_btn{
+    background-color:var(--light-yellow);
     width: 46px;
     height: 46px;
-    background-color: var(--light-yellow);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.heart_btn svg {
+    width: 18px;
+    height: 18px;
+    color: var(--light-yellow);
+   stroke: var(--yellow);
+    transition: color 0.3s;
+}
+
+.heart_btn.active svg {
+    color: var(--yellow); 
+}
+
 
 @media(min-width: 768px){
     .wrapper{

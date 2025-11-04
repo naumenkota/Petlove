@@ -202,3 +202,27 @@ export const getLocations = createAsyncThunk(
     }
   }
 );
+
+export const addFavorite = createAsyncThunk(
+  "favorites/add",
+  async ({ id, item }, thunkApi) => {
+    try {
+      await axios.post(`/notices/favorites/add/${id}`);
+      return item;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const removeFavorite = createAsyncThunk(
+  "favorites/remove",
+  async (id, thunkApi) => {
+    try {
+      await axios.delete(`/notices/favorites/remove/${id}`);
+      return id;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);

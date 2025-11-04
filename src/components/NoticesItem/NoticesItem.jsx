@@ -1,8 +1,29 @@
 import s from "./NoticesItem.module.css";
 import StarIcon from "../../assets/icons/star.svg?react";
 import HeartIcon from "../../assets/icons/heart.svg?react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../redux/api/api";
+import toast from "react-hot-toast";
 
 export default function NoticesItem({ notices, onLearnMore }) {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.items);
+  const loading = useSelector((state) => state.favorites.loading);
+  const isFavorite = favorites.some((item) => item._id === notices._id);
+  const handleFavorite = async () => {
+    try {
+      if (!isFavorite) {
+        await dispatch(
+          addFavorite({ id: notices._id, item: notices })
+        ).unwrap();
+      } else {
+        await dispatch(removeFavorite(notices._id)).unwrap();
+      }
+    } catch (error) {
+      toast.error(error || "Something went wrong");
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <img src={notices.imgURL} alt={notices.title} className={s.img} />
@@ -57,7 +78,14 @@ export default function NoticesItem({ notices, onLearnMore }) {
         >
           Learn more
         </button>
-        <HeartIcon className={s.heart} />
+        <button
+          type="button"
+          className={`${s.heart_btn} ${isFavorite ? s.active : ""}`}
+          onClick={handleFavorite}
+          disabled={loading}
+        >
+          <HeartIcon />
+        </button>
       </div>
     </div>
   );
