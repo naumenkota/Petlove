@@ -226,3 +226,15 @@ export const removeFavorite = createAsyncThunk(
     }
   }
 );
+
+export const addPet = createAsyncThunk(
+  "pets/addPet",
+  async (petData, thunkApi) => {
+    try {
+      const response = await axios.post("/users/current/pets/add", petData);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);

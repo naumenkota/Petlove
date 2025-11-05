@@ -9,7 +9,7 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import OurFriendsPage from "./pages/OurFriendsPage/OurFriendsPage";
 import NoticesList from "./components/NoticesList/NoticesList";
 import ModalAttention from "./components/ModalAttention/ModalAttention";
-
+import AddPetPage from "./pages/AddPetPage/AddPetPage";
 import MainLayout from "./components/MainLayout/MainLayout";
 import ModalApproveAction from "./components/ModalApproveAction/ModalApproveAction";
 import UserNav from "./components/UserNav/UserNav";
@@ -28,6 +28,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
         </Route>
       </Routes>
     </>
