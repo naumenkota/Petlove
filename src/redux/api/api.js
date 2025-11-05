@@ -238,3 +238,15 @@ export const addPet = createAsyncThunk(
     }
   }
 );
+
+export const removePet = createAsyncThunk(
+  "pets/removePet",
+  async (id, thunkApi) => {
+    try {
+      await axios.delete(`/users/current/pets/remove/${id}`);
+      return id;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
