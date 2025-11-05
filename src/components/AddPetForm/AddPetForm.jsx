@@ -1,37 +1,40 @@
 import s from "./AddPetForm.module.css";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import CalendarIcon from "../../assets/icons/calendar.svg?react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { uploadToCloudinary } from "../../utils/uploadCloudinary.js";
 import { useDispatch, useSelector } from "react-redux";
 import { AddPetSchema } from "../../utils/AddPetSchema.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addPet } from "../../redux/api/api.js";
+import { addPet, getSpeciesOption, getSexOption } from "../../redux/api/api.js";
 import UploadIcon from "../../assets/icons/upload-cloud.svg?react";
 import FootprintIcon from "../../assets/icons/footprint.svg?react";
-import { getSpeciesOption } from "../../redux/api/api";
 import MaleIcon from "../../assets/icons/male.svg?react";
 import FemaleIcon from "../../assets/icons/female.svg?react";
 import MultipleIcon from "../../assets/icons/healthicons.svg?react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function AddPetForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [preview, setPreview] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-  const { speciesOption, isLoading, errorMessage } = useSelector(
-    (state) => state.filters
-  );
+  const { speciesOption, sexOption } = useSelector((state) => state.filters);
 
   useEffect(() => {
     dispatch(getSpeciesOption());
+    dispatch(getSexOption());
   }, [dispatch]);
+  console.log("Form render", { sexOption, speciesOption });
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     watch,
     setValue,
@@ -58,6 +61,7 @@ export default function AddPetForm() {
       toast.dismiss();
       toast.success("Image uploaded!");
 
+      console.log("Cloudinary URL:", uploadedUrl);
       setValue("imgUrl", uploadedUrl);
       setPreview(uploadedUrl);
     } catch (error) {
@@ -70,17 +74,22 @@ export default function AddPetForm() {
   };
 
   const onSubmit = async (data) => {
+    console.log("✅ Form submitted:", data);
     try {
       const payload = {
         title: data.title.trim(),
         name: data.name.trim(),
-        imgUrl: data.imgUrl.trim(),
+        imgURL: data.imgUrl.trim(),
         species: data.species.trim(),
-        birthday: data.birthday.trim(),
+        birthday: data.birthday
+          ? new Date(data.birthday).toISOString().split("T")[0]
+          : "",
         sex: data.sex,
       };
 
+      console.log("✅ Payload before send:", payload);
       const resultAction = await dispatch(addPet(payload));
+      console.log("🧩 Result:", resultAction);
 
       if (addPet.fulfilled.match(resultAction)) {
         toast.success("Pet successfully added!");
@@ -93,32 +102,41 @@ export default function AddPetForm() {
     }
   };
 
+  if (!sexOption.length || !speciesOption.length) {
+    return <p>Loading...</p>;
+  }
+
+  console.log("🎯 Form state:", {
+    errors,
+    sex: watch("sex"),
+    species: watch("species"),
+  });
+  console.log("❌ Validation errors:", errors);
+
   return (
     <div className={s.wrapper}>
       <h3 className={s.title}>
         Add my pet / <span className={s.span}>Personal details</span>
       </h3>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.radioGroup}>
-          <label>
-            <input type="radio" value="female" {...register("sex")} />
-            <button className={s.btn_female}>
-              <FemaleIcon />
-            </button>
-          </label>
-          <label>
-            <input type="radio" value="male" {...register("sex")} />
-
-            <button className={s.btn_male}>
-              <MaleIcon />
-            </button>
-          </label>
-          <label>
-            <input type="radio" value="multiple" {...register("sex")} />
-            <button className={s.btn_multi}>
-              <MultipleIcon />
-            </button>
-          </label>
+          {sexOption.map((option) => (
+            <label key={option}>
+              <input type="radio" value={option} {...register("sex")} />
+              <button
+                type="button"
+                onClick={() => setValue("sex", option)}
+                className={`${s.btn} ${s[`btn_${option}`]} ${
+                  watch("sex") === option ? s.active : ""
+                }`}
+              >
+                {option === "female" && <FemaleIcon />}
+                {option === "male" && <MaleIcon />}
+                {option === "multiple" && <MultipleIcon />}
+              </button>
+            </label>
+          ))}
           <ErrorMessage message={errors.sex?.message} />
         </div>
 
@@ -134,7 +152,7 @@ export default function AddPetForm() {
 
         <div className={s.avatarInputGroup}>
           <input
-            {...register("avatar")}
+            {...register("imgUrl")}
             placeholder="https://example.com/avatar.jpg"
             className={s.input_avatar}
           />
@@ -168,6 +186,7 @@ export default function AddPetForm() {
           />
           <ErrorMessage message={errors.title?.message} />
         </div>
+
         <div className={s.inputWrapper}>
           <input
             {...register("name")}
@@ -177,27 +196,46 @@ export default function AddPetForm() {
           <ErrorMessage message={errors.name?.message} />
         </div>
 
-        <div className={s.inputWrapper}>
-          <input
-            {...register("birthday")}
-            placeholder="Pet's Name"
-            className={s.input}
-          />
-          <ErrorMessage message={errors.birthday?.message} />
-        </div>
+        <div className={s.data_wrapper}>
+          <div className={s.inputWrapper}>
+            <div className={s.datepickerWrapper}>
+              <Controller
+                name="birthday"
+                control={control}
+                render={({ field }) => (
+                  <DatePicker
+                    {...field}
+                    selected={field.value}
+                    onChange={(date) => field.onChange(date)}
+                    dateFormat="dd.MM.yyyy"
+                    placeholderText="00.00.0000"
+                    className={s.input_data}
+                    popperPlacement="bottom-start"
+                  />
+                )}
+              />
+              <CalendarIcon className={s.calendarIcon} />
+            </div>
+            <ErrorMessage message={errors.birthday?.message} />
+          </div>
 
-        <div className={s.inputWrapper}>
-          <select {...register("species")} className={s.select} defaultValue="">
-            <option value="" disabled hidden>
-              Type of pet
-            </option>
-            {speciesOption.map((item) => (
-              <option key={item} value={item}>
-                {item}
+          <div className={s.inputWrapper}>
+            <select
+              {...register("species")}
+              className={s.select}
+              defaultValue=""
+            >
+              <option value="" disabled hidden>
+                Type of pet
               </option>
-            ))}
-          </select>
-          <ErrorMessage message={errors.species?.message} />
+              {speciesOption.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+            <ErrorMessage message={errors.species?.message} />
+          </div>
         </div>
 
         <div className={s.btn_wrapper}>

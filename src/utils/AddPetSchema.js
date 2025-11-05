@@ -7,20 +7,18 @@ export const AddPetSchema = yup.object().shape({
 
   imgUrl: yup
     .string()
-    .matches(
-      /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
-      "Enter a valid image URL"
-    )
+    .url("Enter a valid image URL")
     .required("Image URL is required"),
 
   species: yup.string().required("Species is required"),
 
   birthday: yup
-    .string()
-    .matches(
-      /^\d{4}-\d{2}-\d{2}$/,
-      "Enter a valid date in the format YYYY-MM-DD"
-    )
+    .date()
+    .transform((value, originalValue) => {
+      if (originalValue instanceof Date) return originalValue;
+      const [day, month, year] = originalValue.split(".");
+      return new Date(`${year}-${month}-${day}`);
+    })
     .required("Birthday is required"),
 
   sex: yup.string().required("Sex is required"),
