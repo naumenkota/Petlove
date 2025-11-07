@@ -23,7 +23,9 @@ export default function BurgerMenu({ isHomePage }) {
         </button>
 
         <Nav />
-        {isLoggedIn ? <LogOutBtn /> : <AuthNav />}
+        <div className={s.btn_wrapper}>
+          {isLoggedIn ? <LogOutBtn /> : <AuthNav />}
+        </div>
       </div>
     </div>
   );

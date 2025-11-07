@@ -3,7 +3,7 @@ import Modal from "../Modal/Modal.jsx";
 import ModalApproveAction from "../ModalApproveAction/ModalApproveAction.jsx";
 import { useState } from "react";
 
-export default function LogOutBtn() {
+export default function LogOutBtn({ isHomePage }) {
   const [modalOpen, setModalOpen] = useState(false);
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -11,7 +11,10 @@ export default function LogOutBtn() {
 
   return (
     <div>
-      <button className={s.btn} onClick={() => setModalOpen(true)}>
+      <button
+        className={`${s.btn} ${isHomePage ? s.btnHome : ""}`}
+        onClick={() => setModalOpen(true)}
+      >
         Log out
       </button>
 

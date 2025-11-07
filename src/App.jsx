@@ -21,6 +21,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<MainPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/notices" element={<NoticesPage />} />
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>

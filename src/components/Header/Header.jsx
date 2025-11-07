@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 
 export default function Header() {
   const desk = useMediaQuery({ minWidth: 1280 });
+
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
   const location = useLocation();
   const isHomePage = location.pathname === "/home";

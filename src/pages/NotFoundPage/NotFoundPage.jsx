@@ -3,6 +3,7 @@ import notFoundMob1x from "../../assets/images/not-found/not-found-mob.webp";
 import notFoundMob2x from "../../assets/images/not-found/not-found2x-mob.webp";
 import notFound1x from "../../assets/images/not-found/not-found.webp";
 import notFound2x from "../../assets/images/not-found/not-found2x.webp";
+import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   return (
@@ -26,9 +27,10 @@ export default function NotFoundPage() {
       </h2>
       <div className={s.wrapper_btn}>
         <p className={s.text}>Ooops! This page not found :(</p>
-        <button type="button" className={s.btn}>
+
+        <Link to="/home" className={s.btn}>
           To home page
-        </button>
+        </Link>
       </div>
     </div>
   );

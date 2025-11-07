@@ -14,6 +14,8 @@
     text-transform: uppercase;
 }
 
+
+
 @media(min-width: 768px){
     .btn{
         width: 136px;
@@ -22,5 +24,8 @@
         color: var(--white);
         font-size: 16px;
         line-height: 1.25;
+    }
+    .btnHome{
+        border: 1px solid #fff;
     }
 }

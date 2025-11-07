@@ -40,6 +40,11 @@
 
 }
 
+ .btn_wrapper {
+     display: flex;
+     justify-content: center;
+ }
+
 
 @media(min-width: 768px) {
     .burger {
@@ -56,4 +61,5 @@
     .close {
         top: 39px;
     }   
-}
+   
+    }
