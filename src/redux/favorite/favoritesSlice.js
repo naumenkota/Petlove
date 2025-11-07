@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addFavorite, removeFavorite } from "../api/api";
+import { addFavorite, removeFavorite, getUser } from "../api/api";
 
 const initialState = {
   items: [],
@@ -32,11 +32,15 @@ const favoritesSlice = createSlice({
       })
       .addCase(removeFavorite.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = state.items.filter((item) => item._id !== action.payload);
+        const removedId = action.payload?._id || action.meta.arg;
+        state.items = state.items.filter((item) => item._id !== removedId);
       })
       .addCase(removeFavorite.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to remove favorite";
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.items = action.payload.noticesFavorites || [];
       });
   },
 });

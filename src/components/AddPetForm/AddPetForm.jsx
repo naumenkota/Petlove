@@ -34,7 +34,6 @@ export default function AddPetForm() {
     dispatch(getSpeciesOption());
     dispatch(getSexOption());
   }, [dispatch]);
-  console.log("Form render", { sexOption, speciesOption });
 
   const {
     register,
@@ -60,13 +59,9 @@ export default function AddPetForm() {
     try {
       setIsUploading(true);
       toast.loading("Uploading image...");
-
       const uploadedUrl = await uploadToCloudinary(file);
-
       toast.dismiss();
       toast.success("Image uploaded!");
-
-      console.log("Cloudinary URL:", uploadedUrl);
       setValue("imgUrl", uploadedUrl);
       setPreview(uploadedUrl);
     } catch (error) {
@@ -109,13 +104,6 @@ export default function AddPetForm() {
     return <p>Loading...</p>;
   }
 
-  console.log("🎯 Form state:", {
-    errors,
-    sex: watch("sex"),
-    species: watch("species"),
-  });
-  console.log("❌ Validation errors:", errors);
-
   return (
     <div className={s.wrapper}>
       <h3 className={s.title}>
@@ -142,7 +130,6 @@ export default function AddPetForm() {
           ))}
           <ErrorMessage message={errors.sex?.message} />
         </div>
-
         <div className={s.avatarPreview}>
           {preview ? (
             <img src={preview} alt="Photo preview" className={s.previewImg} />
@@ -153,94 +140,92 @@ export default function AddPetForm() {
           )}
         </div>
 
-        <div className={s.avatarInputGroup}>
-          <input
-            {...register("imgUrl")}
-            placeholder="https://example.com/avatar.jpg"
-            className={s.input_avatar}
-          />
+        <div className={s.wrapper_inputs}>
+          <div className={s.avatarInputGroup}>
+            <input
+              {...register("imgUrl")}
+              placeholder="Enter URL"
+              className={s.input_avatar}
+            />
 
-          <button
-            type="button"
-            className={s.uploadBtn}
-            onClick={() => document.getElementById("fileInput").click()}
-            disabled={isUploading}
-          >
-            {isUploading ? "Uploading..." : "Upload photo"}
-            <UploadIcon />
-          </button>
-
-          <input
-            type="file"
-            id="fileInput"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-
-          <ErrorMessage message={errors.imgUrl?.message} />
-        </div>
-
-        <div className={s.inputWrapper}>
-          <input
-            {...register("title")}
-            placeholder="Title"
-            className={s.input}
-          />
-          <ErrorMessage message={errors.title?.message} />
-        </div>
-
-        <div className={s.inputWrapper}>
-          <input
-            {...register("name")}
-            placeholder="Pet's Name"
-            className={s.input}
-          />
-          <ErrorMessage message={errors.name?.message} />
-        </div>
-
-        <div className={s.data_wrapper}>
-          <div className={s.inputWrapper}>
-            <div className={s.datepickerWrapper}>
-              <Controller
-                name="birthday"
-                control={control}
-                render={({ field }) => (
-                  <DatePicker
-                    {...field}
-                    selected={field.value}
-                    onChange={(date) => field.onChange(date)}
-                    dateFormat="dd.MM.yyyy"
-                    placeholderText="00.00.0000"
-                    className={s.input_data}
-                    popperPlacement="bottom-start"
-                  />
-                )}
-              />
-              <CalendarIcon className={s.calendarIcon} />
-            </div>
-            <ErrorMessage message={errors.birthday?.message} />
-          </div>
-
-          <div className={s.inputWrapper}>
-            <select
-              {...register("species")}
-              className={s.select}
-              defaultValue=""
+            <button
+              type="button"
+              className={s.uploadBtn}
+              onClick={() => document.getElementById("fileInput").click()}
+              disabled={isUploading}
             >
-              <option value="" disabled hidden>
-                Type of pet
-              </option>
-              {speciesOption.map((item) => (
-                <option key={item} value={item}>
-                  {item}
+              {isUploading ? "Uploading..." : "Upload photo"}
+              <UploadIcon />
+            </button>
+
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+
+            <ErrorMessage message={errors.imgUrl?.message} />
+          </div>
+          <div className={s.errorWrapper}>
+            <input
+              {...register("title")}
+              placeholder="Title"
+              className={s.input}
+            />
+            <ErrorMessage message={errors.title?.message} />
+          </div>
+          <div className={s.errorWrapper}>
+            <input
+              {...register("name")}
+              placeholder="Pet's Name"
+              className={s.input}
+            />
+            <ErrorMessage message={errors.name?.message} />
+          </div>
+          <div className={s.data_wrapper}>
+            <div className={s.errorWrapper}>
+              <div className={s.datepickerWrapper}>
+                <Controller
+                  name="birthday"
+                  control={control}
+                  render={({ field }) => (
+                    <DatePicker
+                      {...field}
+                      selected={field.value}
+                      onChange={(date) => field.onChange(date)}
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText="00.00.0000"
+                      className={s.input_data}
+                      popperPlacement="bottom-start"
+                    />
+                  )}
+                />
+                <CalendarIcon className={s.calendarIcon} />
+              </div>
+              <ErrorMessage message={errors.birthday?.message} />
+            </div>
+
+            <div className={s.errorWrapper}>
+              <select
+                {...register("species")}
+                className={s.select}
+                defaultValue=""
+              >
+                <option value="" disabled hidden>
+                  Type of pet
                 </option>
-              ))}
-            </select>
-            <ErrorMessage message={errors.species?.message} />
+                {speciesOption.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <ErrorMessage message={errors.species?.message} />
+            </div>
           </div>
         </div>
-
         <div className={s.btn_wrapper}>
           <button
             type="button"

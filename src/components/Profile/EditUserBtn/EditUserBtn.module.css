@@ -33,3 +33,14 @@
     background-color: var(--white);
     width:auto;
 }
+
+@media(min-width: 768px){
+    .user_photo{
+        width: 110px;
+        height: 110px;
+    }
+    .text{
+        font-size: 14px;
+        line-height: 1.28;
+    }
+}

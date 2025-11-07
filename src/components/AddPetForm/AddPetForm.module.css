@@ -12,6 +12,7 @@
     font-size: 28px;
     line-height: 1;
     letter-spacing: -0.03em;
+    margin-bottom: 24px;
 }
 
 .span{
@@ -22,6 +23,8 @@
 }
 
 
+
+
 .radioGroup input[type="radio"] {
     display: none;
 }
@@ -29,6 +32,7 @@
 .radioGroup{
     display: flex;
     gap: 8px;
+    margin-bottom: 8px;
 }
 
 .btn_male{
@@ -80,6 +84,13 @@
     color: var(--white);
 }
 
+.avatarPreview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+
+}
 
 .footprint{
     background-color: var(--light-yellow);
@@ -89,6 +100,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.previewImg{
+    border-radius: 100px;
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+}
+
+.wrapper_inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 31px;
 }
 
 .uploadBtn {
@@ -208,4 +233,105 @@
     border-radius: 30px;
     width: 100px;
     height: 42px;
+}
+
+.errorWrapper, 
+.avatarInputGroup,
+.radioGroup
+{
+    position: relative;
+}
+
+@media(min-width: 768px){
+    .wrapper {
+        max-width: none;
+        border-radius: 60px;
+        width: 704px;
+        height: 614px;
+        padding: 40px 136px;
+    }
+    .title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    .span {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    .btn_male,
+    .btn_female,
+    .btn_multiple{
+        width: 40px;
+        height: 40px;
+    }
+    .radioGroup{
+        margin-bottom: 0;
+    }
+    .avatarPreview {
+        margin-bottom: 12px;
+    }
+    .footprint,
+    .previewImg {
+        width: 86px;
+        height: 86px;
+    }
+    .uploadBtn {
+        max-width: none;
+        width: 146px;
+        height: 42px;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+    .wrapper_inputs {
+        gap: 18px;
+    }
+    .input_avatar {
+        padding: 12px;
+        max-width: none;
+        width: 278px;
+        height: 42px;
+    }
+    .input {
+        padding: 16px;
+        max-width: none;
+        width: 432px;
+        height: 52px;
+    }
+    .select { 
+        padding: 12px;  
+        width: 210px;
+        height: 52px;
+        font-size: 16px;
+        line-height: 1.25;   
+    }
+    .input_data{
+        width: 210px;
+        max-width: none;
+        height: 52px;
+        padding: 16px;
+    }
+    .calendarIcon {
+        top: 16px;
+        right: 16px;
+    }
+    .datepickerWrapper {      
+        max-width: 210px;
+    }
+    .btn_back,
+    .btn_submit {
+        width: 170px;
+        height: 48px;
+        font-size: 16px;
+        line-height: 1.25;     
+    }
+}
+
+@media(min-width: 1280px){
+    .wrapper{
+        width: 592px;
+        height: 654px;
+        padding: 60px 80px;
+    }
 }

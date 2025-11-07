@@ -13,3 +13,31 @@
    justify-content: center;
 
 }
+
+.wrapper{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.title{
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 1.25;
+   color: #2b2b2a;
+}
+
+@media(min-width: 768px){
+   .title{
+      font-size: 18px;
+      line-height: 1.33;
+   }
+   .btn{
+      width: 118px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 1.25;
+   }
+
+}

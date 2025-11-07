@@ -52,6 +52,12 @@
     gap: 10px;
 }
 
+.info_div{
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}
+
 .info_key{
     font-weight: 500;
     font-size: 10px;
@@ -65,4 +71,25 @@
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: -0.02em;
+}
+
+@media(min-width: 768px){
+    .wrapper{
+        max-width: none;
+        width: 305px;
+        height: 149px;
+        padding: 22px 16px;     
+    }
+    .content_wrapper {
+        max-width: 173px;
+    }
+    .delete_btn{
+        width: 32px;
+        height: 32px;
+    }
+    .img{
+        width: 75px;
+        height: 75px;
+    }
+  
 }

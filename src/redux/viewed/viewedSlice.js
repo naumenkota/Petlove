@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getNoticeId } from "../api/api";
 
+const saved = JSON.parse(localStorage.getItem("viewed")) || [];
+
 const initialState = {
-  items: [],
+  items: saved,
   loading: false,
   error: null,
 };
@@ -20,7 +22,13 @@ const viewedSlice = createSlice({
       })
       .addCase(getNoticeId.fulfilled, (state, action) => {
         state.loading = false;
-        state.items.push(action.payload);
+        const exists = state.items.some(
+          (item) => item._id === action.payload._id
+        );
+        if (!exists) {
+          state.items.push(action.payload);
+          localStorage.setItem("viewed", JSON.stringify(state.items));
+        }
       })
       .addCase(getNoticeId.rejected, (state, action) => {
         state.loading = false;

@@ -8,9 +8,11 @@ import PetsBlock from "../PetsBlock/PetsBlock";
 export default function UserCard() {
   return (
     <div className={s.wrapper}>
-      <EditUserBtn>
-        <EditIcon />
-      </EditUserBtn>
+      <div className={s.btn_wrapper}>
+        <EditUserBtn>
+          <EditIcon />
+        </EditUserBtn>
+      </div>
       <UserBlock />
       <PetsBlock />
       <LogOutBtn />

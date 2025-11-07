@@ -5,9 +5,7 @@ import NoticesItem from "../../NoticesItem/NoticesItem.jsx";
 
 export default function MyNotices() {
   const [activeTab, setActiveTab] = useState("favorites");
-  const favorites = useSelector(
-    (state) => state.auth.user.noticesFavorites || []
-  );
+  const favorites = useSelector((state) => state.favorites.items);
   const viewed = useSelector((state) => state.viewed.items);
 
   return (

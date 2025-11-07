@@ -27,8 +27,9 @@ export default function UserBlock() {
         </div>
       )}
 
+      <h3 className={s.title}>My information</h3>
+
       <div className={s.info_wrapper}>
-        <h3 className={s.title}>My information</h3>
         <p className={s.info}>{name}</p>
         <p className={s.info}>{email}</p>
         {phone ? (

@@ -1,6 +1,7 @@
 import s from "./NoticesItem.module.css";
 import StarIcon from "../../assets/icons/star.svg?react";
 import HeartIcon from "../../assets/icons/heart.svg?react";
+import DeleteIcon from "../../assets/icons/delete.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/api/api";
 import toast from "react-hot-toast";
@@ -88,7 +89,7 @@ export default function NoticesItem({ notices, onLearnMore }) {
           onClick={handleFavorite}
           disabled={loading}
         >
-          <HeartIcon />
+          {isFavorite ? <DeleteIcon /> : <HeartIcon />}
         </button>
       </div>
     </div>
