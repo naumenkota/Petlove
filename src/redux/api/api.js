@@ -54,6 +54,7 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkApi) => {
   setAuthHeader(token);
   try {
     const response = await axios.get("/users/current/full");
+    console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.response?.data?.message);
@@ -71,7 +72,7 @@ export const updateUser = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      console.log("Бекенд повернув:", response.data);
+
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response?.data?.message);
@@ -245,6 +246,18 @@ export const removePet = createAsyncThunk(
     try {
       await axios.delete(`/users/current/pets/remove/${id}`);
       return id;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
+  }
+);
+
+export const getNoticeId = createAsyncThunk(
+  "notice/getNoticeId",
+  async (id, thunkApi) => {
+    try {
+      const response = await axios.get(`/notices/${id}`);
+      return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.response?.data?.message);
     }

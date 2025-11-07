@@ -9,7 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddPetSchema } from "../../utils/AddPetSchema.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addPet, getSpeciesOption, getSexOption } from "../../redux/api/api.js";
+import {
+  addPet,
+  getSpeciesOption,
+  getSexOption,
+  getUser,
+} from "../../redux/api/api.js";
 import UploadIcon from "../../assets/icons/upload-cloud.svg?react";
 import FootprintIcon from "../../assets/icons/footprint.svg?react";
 import MaleIcon from "../../assets/icons/male.svg?react";
@@ -74,7 +79,6 @@ export default function AddPetForm() {
   };
 
   const onSubmit = async (data) => {
-    console.log("✅ Form submitted:", data);
     try {
       const payload = {
         title: data.title.trim(),
@@ -87,9 +91,8 @@ export default function AddPetForm() {
         sex: data.sex,
       };
 
-      console.log("✅ Payload before send:", payload);
       const resultAction = await dispatch(addPet(payload));
-      console.log("🧩 Result:", resultAction);
+      await dispatch(getUser());
 
       if (addPet.fulfilled.match(resultAction)) {
         toast.success("Pet successfully added!");

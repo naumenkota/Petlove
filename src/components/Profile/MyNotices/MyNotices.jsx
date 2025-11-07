@@ -5,7 +5,10 @@ import NoticesItem from "../../NoticesItem/NoticesItem.jsx";
 
 export default function MyNotices() {
   const [activeTab, setActiveTab] = useState("favorites");
-  const favorites = useSelector((state) => state.favorites.items);
+  const favorites = useSelector(
+    (state) => state.auth.user.noticesFavorites || []
+  );
+  const viewed = useSelector((state) => state.viewed.items);
 
   return (
     <div className={s.wrapper}>
@@ -45,6 +48,10 @@ export default function MyNotices() {
               "find your favorite pet" page and add them to your favorites.
             </p>
           )
+        ) : viewed.length > 0 ? (
+          viewed.map((notice) => (
+            <NoticesItem key={notice._id} notices={notice} />
+          ))
         ) : (
           <p>Here will be your viewed pets 👀</p>
         )}

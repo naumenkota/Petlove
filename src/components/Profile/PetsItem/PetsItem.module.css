@@ -6,12 +6,18 @@
     height: 132px;
     padding: 16px;
     position: relative;
+    display: flex;
+    gap: 14px;
   
 
 }
 
-.img_wrapper{
+.content_wrapper{
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 153px;
+  width: 100%; 
 }
 
 .delete_btn{
@@ -31,6 +37,7 @@
     border-radius: 100px;
     width: 66px;
     height: 66px;
+    object-fit: cover;
 }
 
 .title{
@@ -42,6 +49,7 @@
 .info{
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .info_key{

@@ -4,6 +4,7 @@ import HeartIcon from "../../assets/icons/heart.svg?react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/api/api";
 import toast from "react-hot-toast";
+import { getNoticeId } from "../../redux/api/api";
 
 export default function NoticesItem({ notices, onLearnMore }) {
   const dispatch = useDispatch();
@@ -74,7 +75,10 @@ export default function NoticesItem({ notices, onLearnMore }) {
         <button
           type="button"
           className={s.btn}
-          onClick={() => onLearnMore(notices)}
+          onClick={() => {
+            dispatch(getNoticeId(notices._id));
+            onLearnMore(notices);
+          }}
         >
           Learn more
         </button>
