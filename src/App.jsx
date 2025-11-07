@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
-
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MainPage from "./pages/MainPage/MainPage";
@@ -23,13 +23,28 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/add-pet" element={<AddPetPage />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute redirectTo="/login">
+                <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/add-pet"
+            element={
+              <PrivateRoute redirectTo="/login">
+                <AddPetPage />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
