@@ -1,16 +1,54 @@
-# React + Vite
+# PetLove 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PetLove is a responsive web application designed for pet lovers. Users can browse, add, and manage information about pets, as well as view news and notices related to pets. The project is built with React, Redux, and a backend API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Demo](#demo)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
+- [Author](#author)
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+You can view the live demo of the application here:  
+[PetLove Live Demo](https://petlove-orcin.vercel.app/)
+
+---
+
+## Features
+
+- Responsive design for mobile, tablet, and desktop
+- User authentication (login/register)
+- Protected routes for Profile and Add Pet pages
+- Add and delete pets
+- View favorite pets and recently viewed notices
+- News section with search and pagination
+- Notices section with filtering by category, type, gender, and location
+- Modal windows for actions and attention messages
+- Retina-ready images and optimized assets
+- Fully validated forms using React Hook Form + Yup
+- Interactive UI with notifications for success or errors
+
+## Tech Stack
+
+- **Frontend:** React, Redux, React Router, React Hook Form, Yup, react-responsive
+- **Styling:** CSS Modules, responsive media queries
+- **Assets:** WebP images, SVG icons
+- **Notifications:** react-hot-toast
+- **Deployment:** Vercel (Frontend), GoIT Backend API
+
+## Contributing
+
+This is a personal project. Contributions are not expected.
+
+## Author
+
+Tetiana Konstantyn
+Email: konstantyn.ta@gmail.com
+GitHub: naumenkota
