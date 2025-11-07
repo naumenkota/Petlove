@@ -2,18 +2,23 @@
     display: flex;
     flex-direction: column;
     gap: 20px;   
+    margin-top: 40px;
+  
 }
 
 @media(min-width: 768px) {
     .list {
         flex-direction: row;
         flex-wrap: wrap;
+        margin-top: 32px;
     }
 
 }
 
 @media(min-width: 1280px) {
     .list {
+        margin-top: 40px;
         gap: 40px 32px;
+        padding-left: 32px;
     }
 }

@@ -7,9 +7,10 @@ export default function PetBlock({
   tab2x,
   desk1x,
   desk2x,
+  className,
 }) {
   return (
-    <div className={s.wrapper}>
+    <div className={`${s.wrapper} ${className || ""}`}>
       <picture>
         <source
           media="(min-width: 1280px)"

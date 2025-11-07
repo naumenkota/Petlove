@@ -1,0 +1,40 @@
+.customSize{
+    border-radius: 30px;
+    max-width: 335px;
+    width: 100%;
+    height: 213px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    margin: 16px 0 20px 0;
+}
+
+@media(min-width: 768px){
+     .customSize {
+        border-radius: 60px;
+        max-width: none;
+        width: 704px;
+        height: 248px;
+        margin-bottom: 16px;
+        padding-left: 0;
+    }
+    .wrapper {
+         margin: 32px 0 32px 0;
+    }
+}
+
+@media(min-width: 1280px) {
+    .customSize {
+        width: 592px;
+        height: 654px;
+        margin-bottom: 0;
+    }
+    .wrapper{
+        display: flex;
+        gap: 32px;
+        
+    }
+}

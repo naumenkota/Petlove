@@ -10,7 +10,6 @@ export default function UserBlock() {
   const name = useSelector(authSelectors.selectName);
   const email = useSelector(authSelectors.selectEmail);
   const phone = useSelector(authSelectors.selectPhone);
-  console.log("UserBlock render:", { avatar, name, email, phone });
 
   return (
     <div className={s.wrapper}>

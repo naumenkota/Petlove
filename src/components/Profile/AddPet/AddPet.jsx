@@ -5,7 +5,7 @@ import PlusIcon from "../../../assets/icons/plus.svg?react";
 export default function AddPet() {
   return (
     <div className={s.wrapper}>
-      <h4 classname={s.title}>My pets</h4>
+      <h4 className={s.title}>My pets</h4>
       <NavLink to="/add-pet">
         <button type="button" className={s.btn}>
           Add pet

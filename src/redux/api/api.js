@@ -54,7 +54,6 @@ export const getUser = createAsyncThunk("auth/getUser", async (_, thunkApi) => {
   setAuthHeader(token);
   try {
     const response = await axios.get("/users/current/full");
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.response?.data?.message);
