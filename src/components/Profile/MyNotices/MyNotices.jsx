@@ -51,7 +51,7 @@ export default function MyNotices() {
             <NoticesItem key={notice._id} notices={notice} />
           ))
         ) : (
-          <p>Here will be your viewed pets 👀</p>
+          <p className={s.text}>Here will be your viewed pets</p>
         )}
       </div>
     </div>

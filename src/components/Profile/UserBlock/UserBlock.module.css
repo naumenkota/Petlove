@@ -73,3 +73,12 @@
     
         
 }
+
+@media(min-width: 1280px) {
+    .info_wrapper {
+        flex-direction: column;
+    }
+     .info {
+        width: 440px;
+    }
+}

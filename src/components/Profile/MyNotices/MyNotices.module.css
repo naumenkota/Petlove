@@ -1,10 +1,13 @@
 .wrapper{
-    margin-top: 40px;
+    padding: 40px 0 56px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .tabs{
     display: flex;
     gap: 10px;
+
 }
 
 .tab{
@@ -51,4 +54,38 @@
     line-height: 1.28571;
     letter-spacing: -0.02em;
     text-align: center;
+}
+
+
+@media(min-width: 768px){
+    .wrapper{
+      padding: 32px 0 60px 0;
+    }
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .tabs {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .tab,
+    .active
+    {
+        width: 142px;
+        height: 48px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+}
+
+@media(min-width: 1280px){
+    .tabs {
+        margin-bottom: 32px;
+    }
+    .content {
+        gap: 24px;
+    }
+        
 }

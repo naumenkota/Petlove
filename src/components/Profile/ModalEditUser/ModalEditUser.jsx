@@ -166,7 +166,7 @@ export default function ModalEditUser({ onClose }) {
           </div>
         </div>
         <button type="submit" className={s.btn}>
-          Go to profile
+          Save
         </button>
       </form>
     </div>

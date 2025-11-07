@@ -124,3 +124,47 @@
     letter-spacing: -0.03em;
     margin-top: 21px;
 }
+
+@media(min-width: 768px){
+    .wrapper {
+        border-radius: 30px;
+        max-width: none;
+        width: 480px;
+        height: 580px;
+        padding: 50px;
+    }
+    .title{
+        font-size: 18px;
+        line-height: 1.33;
+    }
+    .btn{
+        margin-top: 40px;
+        height: 52px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    .previewImg,
+    .userImg {
+        border-radius: 100px;
+        width: 86px;
+        height: 86px;
+    }
+    .uploadBtn {
+        max-width: none;
+        width: 146px;
+        font-size: 14px;
+        line-height: 1.28;
+    }
+    .input_avatar {
+        max-width: none;
+        width: 226px;    
+    }
+    .input {
+        padding: 16px;
+        height: 52px;
+    }  
+    .inputGroup {
+        gap: 14px;
+    }
+}
+

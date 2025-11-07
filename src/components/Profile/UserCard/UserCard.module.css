@@ -14,10 +14,17 @@
 
 @media(min-width: 768px){
     .wrapper {
-        border-radius: 30px;
+        border-radius: 60px;
         max-width: none;
         width: 704px;
         padding: 40px ;
     }
         
+}
+
+@media(min-width: 1280px) {
+    .wrapper {
+        width: 520px;
+    }
+
 }
