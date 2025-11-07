@@ -4,7 +4,7 @@ import dog from "../../assets/images/dog/dog.webp";
 import dog2x from "../../assets/images/dog/dog2x.webp";
 import { Link } from "react-router-dom";
 
-export default function ModalAttention(onClose) {
+export default function ModalAttention({ onClose }) {
   return (
     <div className={s.wrapper}>
       <button className={s.close} onClick={onClose}>
@@ -13,7 +13,7 @@ export default function ModalAttention(onClose) {
 
       <div className={s.dog_wrapper}>
         <picture>
-          <source srcset={`${dog} 1x, ${dog2x} 2x`} type="image/webp" />
+          <source srcSet={`${dog} 1x, ${dog2x} 2x`} type="image/webp" />
           <img src={dog} alt="Dog" />
         </picture>
       </div>
