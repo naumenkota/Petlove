@@ -2,10 +2,9 @@ import s from "./Nav.module.css";
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
-export default function Nav() {
-  const active = ({ isActive }) => {
-    return clsx(s.navLink, isActive && s.active);
-  };
+export default function Nav({ isHomePage }) {
+  const active = ({ isActive }) =>
+    clsx(s.navLink, isActive && s.active, isHomePage && s.home);
 
   return (
     <nav className={s.nav}>

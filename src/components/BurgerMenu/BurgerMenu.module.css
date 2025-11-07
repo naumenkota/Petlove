@@ -1,4 +1,12 @@
+.burger svg path {
+    stroke: #262626;
+   
+}
 
+.wrapper.home .burger svg path {
+    stroke: #ffffff;
+   
+}
 
 .burger {
     background-color: inherit;
