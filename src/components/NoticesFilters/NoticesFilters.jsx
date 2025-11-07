@@ -1,6 +1,7 @@
 import s from "./NoticesFilters.module.css";
 import SearchField from "../SearchField/SearchField";
 import { useSelector, useDispatch } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import {
   setSelectedSex,
   setSelectedSpecies,
@@ -18,6 +19,8 @@ import AsyncSelect from "react-select/async";
 import { setSelectedCity } from "../../redux/cities/citiesSlice";
 
 export default function NoticesFilters() {
+  const isTablet = useMediaQuery({ minWidth: 768 });
+  const controlHeight = isTablet ? "48px" : "42px";
   const customStyles = {
     control: (provided) => ({
       ...provided,
@@ -27,7 +30,8 @@ export default function NoticesFilters() {
       padding: "10px 12px",
       maxWidth: "295px",
       width: "100%",
-      height: "42px",
+      height: controlHeight,
+      minHeight: controlHeight,
       boxSizing: "border-box",
       backgroundColor: "var(--white)",
       borderRadius: "30px",
@@ -79,10 +83,10 @@ export default function NoticesFilters() {
       width: "100%",
     }),
     dropdownIndicator: () => ({
-      display: "none", // Прибираємо стандартну стрілку
+      display: "none",
     }),
     indicatorSeparator: () => ({
-      display: "none", // Прибираємо роздільник
+      display: "none",
     }),
     valueContainer: (provided) => ({
       ...provided,
@@ -160,29 +164,39 @@ export default function NoticesFilters() {
       <div className={s.select_wrapper}>
         <SearchField type="notices" />
 
-        <select value={selectedCategory} onChange={handleChangeCategory}>
-          <option value="" disabled hidden>
-            Category
-          </option>
-          <option value="all">Show all</option>
-          {categoriesOption.map((category) => (
-            <option key={category} value={category}>
-              {capitalizeFirstWord(category)}
+        <div className={s.select_wrapper_small}>
+          <select
+            value={selectedCategory}
+            onChange={handleChangeCategory}
+            className={s.select}
+          >
+            <option value="" disabled hidden>
+              Category
             </option>
-          ))}
-        </select>
+            <option value="all">Show all</option>
+            {categoriesOption.map((category) => (
+              <option key={category} value={category}>
+                {capitalizeFirstWord(category)}
+              </option>
+            ))}
+          </select>
 
-        <select value={selectedSex} onChange={handleChangeSex}>
-          <option value="" disabled hidden>
-            By gender
-          </option>
-          <option value="all">Show all</option>
-          {sexOption.map((sex) => (
-            <option key={sex} value={sex}>
-              {capitalizeFirstWord(sex)}
+          <select
+            value={selectedSex}
+            onChange={handleChangeSex}
+            className={s.select}
+          >
+            <option value="" disabled hidden>
+              By gender
             </option>
-          ))}
-        </select>
+            <option value="all">Show all</option>
+            {sexOption.map((sex) => (
+              <option key={sex} value={sex}>
+                {capitalizeFirstWord(sex)}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <select
           value={selectedSpecies}

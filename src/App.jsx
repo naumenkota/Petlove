@@ -7,12 +7,12 @@ import MainPage from "./pages/MainPage/MainPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import OurFriendsPage from "./pages/OurFriendsPage/OurFriendsPage";
-import NoticesList from "./components/NoticesList/NoticesList";
 import HomePage from "./pages/HomePage/HomePage";
 import AddPetPage from "./pages/AddPetPage/AddPetPage";
 import MainLayout from "./components/MainLayout/MainLayout";
 
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import NoticesPage from "./pages/NoticesPage/NoticesPage";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route path="/home" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/notices" element={<NoticesList />} />
+          <Route path="/notices" element={<NoticesPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/login" element={<LoginPage />} />
