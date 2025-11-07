@@ -9,11 +9,14 @@ import Title from "../Title/Title.jsx";
 import { useDispatch } from "react-redux";
 import { registration } from "../../redux/api/api.js";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,6 +33,7 @@ export default function RegistrationForm() {
       delete userData.confirmPassword;
       await dispatch(registration(userData)).unwrap();
       toast.success("Registration successful!");
+      navigate("/home");
     } catch (error) {
       toast.error(error);
     }
@@ -95,7 +99,10 @@ export default function RegistrationForm() {
       </form>
 
       <p className={s.question}>
-        Already have an account?<span className={s.login}> Login</span>
+        Already have an account?
+        <Link to="/login" className={s.login}>
+          Login
+        </Link>
       </p>
     </div>
   );

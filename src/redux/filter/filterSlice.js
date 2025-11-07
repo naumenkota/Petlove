@@ -44,19 +44,19 @@ const filtersSlice = createSlice({
       state.sortBy = action.payload;
 
       switch (action.payload) {
-        case "popular":
+        case "Popular":
           state.byPopularity = false;
           state.byPrice = null;
           break;
-        case "unpopular":
+        case "Unpopular":
           state.byPopularity = true;
           state.byPrice = null;
           break;
-        case "cheap":
+        case "Cheap":
           state.byPrice = true;
           state.byPopularity = null;
           break;
-        case "expensive":
+        case "Expensive":
           state.byPrice = false;
           state.byPopularity = null;
           break;

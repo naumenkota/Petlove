@@ -136,15 +136,18 @@ export default function NoticesFilters() {
   }, [dispatch]);
 
   const handleChangeSex = (e) => {
-    dispatch(setSelectedSex(e.target.value));
+    const value = e.target.value === "all" ? "" : e.target.value;
+    dispatch(setSelectedSex(value));
   };
 
   const handleChangeSpecies = (e) => {
-    dispatch(setSelectedSpecies(e.target.value));
+    const value = e.target.value === "all" ? "" : e.target.value;
+    dispatch(setSelectedSpecies(value));
   };
 
   const handleChangeCategory = (e) => {
-    dispatch(setSelectedCategory(e.target.value));
+    const value = e.target.value === "all" ? "" : e.target.value;
+    dispatch(setSelectedCategory(value));
   };
 
   const capitalizeFirstWord = (str) => {

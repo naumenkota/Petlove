@@ -9,10 +9,13 @@ import { LoginFormSchema } from "../../utils/LoginFormSchema.js";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/api/api.js";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -27,6 +30,7 @@ export default function LoginForm() {
     try {
       await dispatch(login(data)).unwrap();
       toast.success("Log in successful!");
+      navigate("/home");
     } catch (error) {
       toast.error(error);
     }
@@ -72,7 +76,10 @@ export default function LoginForm() {
       </form>
 
       <p className={s.question}>
-        Don't have an account? <span className={s.register}>Register</span>
+        Don't have an account?{" "}
+        <Link to="/register" className={s.register}>
+          Register
+        </Link>
       </p>
     </div>
   );

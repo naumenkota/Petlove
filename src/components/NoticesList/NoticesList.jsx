@@ -23,7 +23,6 @@ export default function NoticesList() {
   };
 
   const isAuth = useSelector(authSelectors.selectIsLoggedIn);
-  console.log("isAuth:", isAuth);
 
   const dispatch = useDispatch();
   const { items, isLoading, page, perPage, totalPages } = useSelector(
