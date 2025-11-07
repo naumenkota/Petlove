@@ -33,6 +33,7 @@ export default function MyNotices() {
               <NoticesItem
                 key={notice._id}
                 notices={notice}
+                small
                 onLearnMore={() => {}}
               />
             ))
@@ -48,7 +49,7 @@ export default function MyNotices() {
           )
         ) : viewed.length > 0 ? (
           viewed.map((notice) => (
-            <NoticesItem key={notice._id} notices={notice} />
+            <NoticesItem key={notice._id} notices={notice} small />
           ))
         ) : (
           <p className={s.text}>Here will be your viewed pets</p>

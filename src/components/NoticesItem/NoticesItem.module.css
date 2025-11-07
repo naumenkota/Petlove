@@ -189,4 +189,7 @@
     .btn {
         max-width: 257px;
     }
+    .small {
+        width: 320px !important;
+    }
 }

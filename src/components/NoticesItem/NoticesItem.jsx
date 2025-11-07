@@ -7,7 +7,7 @@ import { addFavorite, removeFavorite } from "../../redux/api/api";
 import toast from "react-hot-toast";
 import { getNoticeId } from "../../redux/api/api";
 
-export default function NoticesItem({ notices, onLearnMore }) {
+export default function NoticesItem({ notices, onLearnMore, small }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.items);
   const loading = useSelector((state) => state.favorites.loading);
@@ -27,7 +27,7 @@ export default function NoticesItem({ notices, onLearnMore }) {
   };
 
   return (
-    <div className={s.wrapper}>
+    <div className={`${s.wrapper} ${small ? s.small : ""}`}>
       <img src={notices.imgURL} alt={notices.title} className={s.img} />
       <div className={s.title_wrapper}>
         <h3 className={s.title}>{notices.title}</h3>
