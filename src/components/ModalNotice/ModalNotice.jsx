@@ -64,7 +64,11 @@ export default function ModalNotice({ notices, onClose }) {
 
       <div className={s.btn_wrapper}>
         <button className={s.btn_add}>Add to</button>
-        <button className={s.btn_contact}> Contact</button>
+        <button className={s.btn_contact}>
+          <a href={`mailto:${notices.user.email}`} className={s.btn_contact}>
+            Contact
+          </a>
+        </button>
       </div>
     </div>
   );
