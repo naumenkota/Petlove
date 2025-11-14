@@ -1,12 +1,22 @@
 import { useState } from "react";
 import s from "./MyNotices.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import NoticesItem from "../../NoticesItem/NoticesItem.jsx";
+import { getNoticeId } from "../../../redux/api/api.js";
+import Modal from "../../Modal/Modal.jsx";
+import ModalNotice from "../../ModalNotice/ModalNotice.jsx";
 
 export default function MyNotices() {
+  const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("favorites");
   const favorites = useSelector((state) => state.favorites.items);
   const viewed = useSelector((state) => state.viewed.items);
+  const [selectedNotice, setSelectedNotice] = useState(null);
+
+  const handleLearnMore = (notice) => {
+    setSelectedNotice(notice);
+    dispatch(getNoticeId(notice._id));
+  };
 
   return (
     <div className={s.wrapper}>
@@ -34,7 +44,7 @@ export default function MyNotices() {
                 key={notice._id}
                 notices={notice}
                 small
-                onLearnMore={() => {}}
+                onLearnMore={handleLearnMore}
               />
             ))
           ) : (
@@ -49,12 +59,24 @@ export default function MyNotices() {
           )
         ) : viewed.length > 0 ? (
           viewed.map((notice) => (
-            <NoticesItem key={notice._id} notices={notice} small />
+            <NoticesItem
+              key={notice._id}
+              notices={notice}
+              small
+              onLearnMore={handleLearnMore}
+            />
           ))
         ) : (
           <p className={s.text}>Here will be your viewed pets</p>
         )}
       </div>
+
+      <Modal isOpen={!!selectedNotice} onClose={() => setSelectedNotice(null)}>
+        <ModalNotice
+          notices={selectedNotice}
+          onClose={() => setSelectedNotice(null)}
+        />
+      </Modal>
     </div>
   );
 }

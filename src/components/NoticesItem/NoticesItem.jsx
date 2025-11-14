@@ -77,6 +77,7 @@ export default function NoticesItem({ notices, onLearnMore, small }) {
           type="button"
           className={s.btn}
           onClick={() => {
+            console.log("CLICKED", notices);
             dispatch(getNoticeId(notices._id));
             onLearnMore(notices);
           }}
